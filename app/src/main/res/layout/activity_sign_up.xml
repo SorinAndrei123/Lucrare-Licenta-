@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".logare.SignUpActivity">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Inregistrare"
+           android:textSize="40dp"
+           android:layout_marginLeft="80dp">
+
+       </TextView>
+
+       <EditText
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="70dp"
+           android:id="@+id/editTextNumeSignUp"
+           android:hint="Numele complet">
+
+       </EditText>
+       <EditText
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="70dp"
+           android:id="@+id/editTextMailSignUp"
+           android:hint="Adresa de mail">
+
+       </EditText>
+       <EditText
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="70dp"
+           android:id="@+id/editTextParolaSignUp"
+           android:hint="@string/parola"
+           android:inputType="textPassword">
+
+
+       </EditText>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="60dp"
+           android:text="Tip Cont"
+           >
+
+       </TextView>
+
+       <RadioGroup
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/radioGrupTipCont"
+           android:orientation="horizontal"
+          >
+
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/radioButonProfesor"
+               android:text="Profesor"
+               android:layout_marginLeft="40dp">
+
+           </RadioButton>
+
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/radioButonStudent"
+               android:text="Student"
+               android:layout_marginLeft="60dp">
+
+           </RadioButton>
+
+
+       </RadioGroup>
+
+       <RadioGroup
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/radioGrupAn"
+           android:visibility="invisible"
+           android:layout_marginTop="70dp"
+           android:orientation="horizontal"
+
+           >
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="An 1"
+               android:layout_marginLeft="30dp"
+               android:id="@+id/radioButonAn1">
+
+           </RadioButton>
+
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="An 2"
+               android:layout_marginLeft="60dp"
+               android:id="@+id/radioButonAn2">
+
+           </RadioButton>
+           <RadioButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="An 3"
+               android:id="@+id/radioButonAn3"
+               android:layout_marginLeft="60dp"
+               >
+
+           </RadioButton>
+       </RadioGroup>
+
+       <TextView
+           android:id="@+id/textViewGrupa"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Grupa"
+           android:visibility="invisible"
+           android:layout_marginTop="40dp">
+
+       </TextView>
+       <Spinner
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:visibility="invisible"
+           android:id="@+id/spinnerGrupa">
+
+       </Spinner>
+       <ProgressBar
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:id="@+id/progressBarSignUp"
+           android:visibility="invisible"
+           android:layout_marginTop="40dp">
+
+       </ProgressBar>
+       <Button
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Sign up"
+           android:id="@+id/butonSignUp">
+
+       </Button>
+
+   </LinearLayout>
+</ScrollView>

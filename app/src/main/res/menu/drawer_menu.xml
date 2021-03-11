@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+        <item
+            android:id="@+id/nav_chat_item" android:icon="@drawable/ic_baseline_message_24"
+            android:title="Messages"/>
+
+        <item android:id="@+id/nav_timetable" android:icon="@drawable/ic_baseline_access_time_24"
+            android:title="Timetable">
+
+        </item>
+
+
+
+
+</menu>
