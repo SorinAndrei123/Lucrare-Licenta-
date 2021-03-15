@@ -8,13 +8,16 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 
 import com.example.aplicatielicenta.R;
+import com.example.aplicatielicenta.logare.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -32,6 +35,7 @@ TextView numeCont,email;
 NavigationView navigationView;
 View headerView;
 FirebaseFirestore firebaseFirestore;
+FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +48,7 @@ FirebaseFirestore firebaseFirestore;
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView=findViewById(R.id.nav_view);
+        firebaseAuth=FirebaseAuth.getInstance();
         selectareFragmente();
         headerView=navigationView.getHeaderView(0);
         numeCont=headerView.findViewById(R.id.mainPageTextViewNume);
@@ -88,5 +93,23 @@ FirebaseFirestore firebaseFirestore;
         }
 
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.old_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.logoutAplicatie){
+            firebaseAuth.signOut();
+            Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+
+
+        }
+        return true;
     }
 }

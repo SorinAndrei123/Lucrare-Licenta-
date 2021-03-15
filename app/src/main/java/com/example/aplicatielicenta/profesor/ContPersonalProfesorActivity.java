@@ -1,12 +1,15 @@
 package com.example.aplicatielicenta.profesor;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -32,6 +35,7 @@ NavigationView navigationView;
 View headerView;
 FirebaseFirestore firebaseFirestore;
 Fragment fragment;
+FirebaseAuth firebaseAuth;
 
 
 
@@ -45,6 +49,7 @@ Fragment fragment;
     private void initializare() {
         Toolbar toolbar=findViewById(R.id.toolbarprofesor);
         setSupportActionBar(toolbar);
+        firebaseAuth=FirebaseAuth.getInstance();
         drawerLayout=findViewById(R.id.drawer_layout_profesor);
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -98,5 +103,26 @@ selectareFragment();
         }
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.old_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.logoutAplicatie){
+            firebaseAuth.signOut();
+
+
+        }
+        return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
