@@ -34,7 +34,7 @@ import java.util.Locale;
 import utilitare.general.Sarcina;
 
 public class CreareTaskProfesorActivity extends AppCompatActivity {
-    EditText descriereaCerintei,dataDeadline,oraDeadline;
+    EditText descriereaCerintei,dataDeadline,oraDeadline,titlu;
     TextView textView;
     Calendar calendar;
     RadioGroup tipFisierSuportat;
@@ -52,6 +52,7 @@ public class CreareTaskProfesorActivity extends AppCompatActivity {
         creareTaskNou=findViewById(R.id.buttonCreareTaskNou);
         firebaseFirestore=FirebaseFirestore.getInstance();
         dataDeadline=findViewById(R.id.editTextDataDeadline);
+        titlu=findViewById(R.id.editTextTitluTask);
         codMaterie=getIntent().getExtras().getString("cod materie");
         calendar=Calendar.getInstance();
         DatePickerDialog.OnDateSetListener date=new DatePickerDialog.OnDateSetListener() {
@@ -127,11 +128,16 @@ public class CreareTaskProfesorActivity extends AppCompatActivity {
                     return;
 
                 }
+                if(titlu.getText().toString().isEmpty()){
+                    titlu.setError("Campul nu poate fi gol");
+                    return;
+                }
                 Sarcina sarcina=new Sarcina();
                 sarcina.setIdMaterie(codMaterie);
                 sarcina.setDataDeadline(dataDeadline.getText().toString().trim());
                 sarcina.setOraDeadline(oraDeadline.getText().toString().trim());
                 sarcina.setDescriere(descriereaCerintei.getText().toString());
+                sarcina.setTitlu(titlu.getText().toString());
                 sarcina.setTipFisierDorit(fisierSuportat());
                 sarcina.setNrSaptDeadline(saptamanaDeLucru.getSelectedItem().toString());
                 Intent intent=getIntent();
@@ -144,8 +150,6 @@ public class CreareTaskProfesorActivity extends AppCompatActivity {
                         finish();
                     }
                 });
-               // intent.putExtra("sarcina",sarcina);
-              //  setResult(Activity.RESULT_OK,intent);
 
             }
         });

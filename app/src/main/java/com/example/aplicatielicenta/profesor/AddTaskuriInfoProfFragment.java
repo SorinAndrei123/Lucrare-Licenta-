@@ -26,11 +26,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import utilitare.general.AdaptorTask;
+import utilitare.general.RecyclerItemClickListener;
 import utilitare.general.Sarcina;
 
 import static android.app.Activity.RESULT_OK;
@@ -48,6 +51,7 @@ public class AddTaskuriInfoProfFragment extends Fragment {
     List<Sarcina> listaSarciniSapt1 = new ArrayList<>();
     List<Sarcina> listaSarciniSapt2 = new ArrayList<>();
     AdaptorTask adaptorTaskSaptamana1,adaptorTaskSaptamana2;
+    String idSarcina;
 
 
     public AddTaskuriInfoProfFragment() {
@@ -57,7 +61,6 @@ public class AddTaskuriInfoProfFragment extends Fragment {
     public static AddTaskuriInfoProfFragment newInstance(String idMaterie) {
         AddTaskuriInfoProfFragment fragment = new AddTaskuriInfoProfFragment();
         Bundle args = new Bundle();
-        ;
         args.putString(cheie, idMaterie);
         fragment.setArguments(args);
         return fragment;
@@ -117,6 +120,53 @@ public class AddTaskuriInfoProfFragment extends Fragment {
                 //startActivity(intent);
             }
         });
+        firebaseFirestore.collection("Sarcini").whereEqualTo("idMaterie",idMaterie).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot queryDocumentSnapshot:task.getResult()){
+                        Sarcina sarcina=queryDocumentSnapshot.toObject(Sarcina.class);
+                        if(sarcina.getNrSaptDeadline().equals("1")){
+                            listaSarciniSapt1.add(sarcina);
+                            saptamana1.setAdapter(adaptorTaskSaptamana1);
+                            adaptorTaskSaptamana1.notifyDataSetChanged();
+
+                        }
+                        else if(sarcina.getNrSaptDeadline().equals("2")){
+                            listaSarciniSapt2.add(sarcina);
+                            saptamana2.setAdapter(adaptorTaskSaptamana2);
+                            adaptorTaskSaptamana2.notifyDataSetChanged();
+                        }
+                    }
+                }
+            }
+        });
+
+        saptamana1.addOnItemTouchListener(new RecyclerItemClickListener(view.getContext().getApplicationContext(), saptamana1, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                searchSarcini("1",position);
+
+
+
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
+        saptamana2.addOnItemTouchListener(new RecyclerItemClickListener(view.getContext().getApplicationContext(), saptamana2, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                searchSarcini("2",position);
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
 
 
     }
@@ -139,14 +189,33 @@ public class AddTaskuriInfoProfFragment extends Fragment {
                             String saptamana=sarcina.getNrSaptDeadline();
                             if(saptamana.equals("1")){
                                 listaSarciniSapt1.add(sarcina);
-                                saptamana1.setAdapter(adaptorTaskSaptamana1);
                                 adaptorTaskSaptamana1.notifyDataSetChanged();
+                            }
+                            else if(saptamana.equals("2")){
+                                listaSarciniSapt2.add(sarcina);
+                                adaptorTaskSaptamana2.notifyDataSetChanged();
                             }
                         }
                     }
                 });
             }
         }
+
+
+    }
+    void searchSarcini(String saptamana,int pozitie){
+
+        firebaseFirestore.collection("Sarcini").whereEqualTo("nrSaptDeadline",saptamana).whereEqualTo("idMaterie",idMaterie).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                  idSarcina=task.getResult().getDocuments().get(pozitie).getId();
+                    Fragment fragment=VizualizareSarciniFragment.newInstance(idSarcina);
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_profesor,fragment).commit();
+
+                }
+            }
+        });
 
 
     }

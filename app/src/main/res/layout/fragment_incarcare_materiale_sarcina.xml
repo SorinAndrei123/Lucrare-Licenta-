@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".student.IncarcareMaterialeSarcinaFragment"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewDescriereTaskDetaliiStudent"
+        android:layout_marginTop="40dp"
+        android:text="Descriere task">
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewTermenLimitaStudent"
+        android:layout_marginTop="40dp"
+        android:text="Termen limita">
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewTipFisierDetaliiStudent"
+        android:text="Tip fisier"
+        android:layout_marginTop="40dp">
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewNotaPrimita"
+        android:layout_marginTop="40dp"
+        android:visibility="invisible"
+        android:text="Nota">
+
+    </TextView>
+
+    <ProgressBar
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+    android:id="@+id/progressBarUploadFisier"
+    android:layout_marginTop="100dp">
+
+</ProgressBar>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:id="@+id/buttonChooseFile"
+        android:text="Choose">
+
+    </Button>
+
+
+</LinearLayout>

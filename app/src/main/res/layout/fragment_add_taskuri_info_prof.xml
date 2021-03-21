@@ -1,51 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".profesor.AddTaskuriInfoProfFragment">
+        tools:context=".profesor.AddTaskuriInfoProfFragment"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/profLinkConectare"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:hint="Link Conectare"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Link Zoom"
+            android:textSize="20dp"
+            android:layout_marginBottom="40dp">
+
+        </TextView>
+
+        <EditText
+            android:id="@+id/profLinkConectare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="Link Conectare"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButtonAdaugareInformatii"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="316dp"
-            android:layout_marginLeft="316dp"
-            android:layout_marginBottom="552dp"
+            android:layout_marginStart="320dp"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="80dp"
             android:clickable="true"
             android:src="@android:drawable/ic_dialog_info"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/buttonaAdaugareTaskNou"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="104dp"
-            android:layout_marginLeft="104dp"
-            android:layout_marginBottom="4dp"
-            android:text="Creeaza task nou"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            />
+
+
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="28dp"
+            android:layout_marginTop="20dp"
             android:text="Saptamana 1"
             app:layout_constraintBottom_toTopOf="@+id/recyclerViewSapt1"
             app:layout_constraintStart_toStartOf="parent" />
@@ -56,29 +62,38 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"
-            android:layout_marginBottom="336dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginBottom="60dp"
+             />
 
         <TextView
             android:id="@+id/textViewSapt2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="194dp"
+            android:layout_marginBottom="40dp"
             android:text="Saptmana 2"
-            app:layout_constraintBottom_toBottomOf="@+id/recyclerViewSapt2"
-            app:layout_constraintStart_toStartOf="parent" />
+             />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewSapt2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="84dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginBottom="68dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <Button
+            android:id="@+id/buttonaAdaugareTaskNou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginBottom="4dp"
+            android:text="Creeaza task nou"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
 

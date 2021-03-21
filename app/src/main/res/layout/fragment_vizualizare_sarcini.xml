@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".profesor.VizualizareSarciniFragment">
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/textViewDescriereTaskDetalii"
+  android:layout_marginTop="40dp"
+  android:text="Descriere task">
+
+</TextView>
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+    android:id="@+id/textViewTermenLimita"
+    android:layout_marginTop="40dp"
+    android:text="Termen limita">
+
+  </TextView>
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/textViewTipFisierDetalii"
+      android:text="Tip fisier"
+      android:layout_marginTop="40dp">
+
+  </TextView>
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+    android:id="@+id/textViewTemeDeEvaluat"
+      android:layout_marginTop="40dp"
+      android:text="Teme de evaluat">
+
+  </TextView>
+<androidx.recyclerview.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+  android:layout_marginTop="20dp"
+    android:id="@+id/recyclerViewSarciniDePunctat">
+
+</androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

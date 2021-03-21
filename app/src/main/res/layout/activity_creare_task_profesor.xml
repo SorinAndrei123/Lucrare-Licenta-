@@ -15,7 +15,7 @@
             android:id="@+id/editTextDescriereTask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="96dp"
             android:ems="10"
             android:hint="Descrierea cerintei"
             android:inputType="textImeMultiLine"
@@ -132,6 +132,17 @@
             android:ems="10"
             android:focusable="false"
             android:hint="Ora deadline"
+            android:inputType="textPersonName"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <EditText
+            android:id="@+id/editTextTitluTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:ems="10"
+            android:hint="Titlu"
             android:inputType="textPersonName"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp" />

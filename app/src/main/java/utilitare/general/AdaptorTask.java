@@ -18,16 +18,13 @@ public class AdaptorTask extends RecyclerView.Adapter<AdaptorTask.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.laytaskafisare,parent,false);
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_titlu_task,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.descriereTask.setText("Descriere task: "+this.listaSarcini.get(position).getDescriere());
-        holder.tipFisierSuportat.setText("Tip fisier suportat: "+this.listaSarcini.get(position).getTipFisierDorit());
-        holder.deadline.setText("Data: "+this.listaSarcini.get(position).getDataDeadline()+"  ora:"+ this.listaSarcini.get(position).getOraDeadline());
-        holder.notaEvaluare.setText("Nota primita: "+this.listaSarcini.get(position).getNotaAcordata());
+        holder.titlu.setText(this.listaSarcini.get(position).getTitlu());
 
 
 
@@ -39,14 +36,12 @@ public class AdaptorTask extends RecyclerView.Adapter<AdaptorTask.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView descriereTask,deadline,tipFisierSuportat,notaEvaluare;
+        public TextView titlu;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            descriereTask=itemView.findViewById(R.id.textViewDescriereTask);
-            deadline=itemView.findViewById(R.id.textViewDeadline);
-            tipFisierSuportat=itemView.findViewById(R.id.textViewTipFisierSuportatLayout);
-            notaEvaluare=itemView.findViewById(R.id.textViewNotaEvaluare);
+            titlu=itemView.findViewById(R.id.textViewTitluTask);
+
 
         }
     }

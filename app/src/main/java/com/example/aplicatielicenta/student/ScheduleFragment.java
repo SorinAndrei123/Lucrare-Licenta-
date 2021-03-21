@@ -101,12 +101,12 @@ Fragment fragmentCurent;
                        if(listaMaterii.get(position).getSerie()!=null){
                             Toast.makeText(getContext().getApplicationContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
                            String idMaterie=   allTasks.getResult().get(0).getDocuments().get(position).getId();
-                           fragmentCurent=InformatiiAditionaleStudentFragment.newInstance(idMaterie);
+                           fragmentCurent=InformatiiAditionaleStudentFragment.newInstance(idMaterie,userPrimit);
                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentCurent).commit();
                         }
                        else if(listaMaterii.get(position).getGrupa()!=null){
                            String idMaterie=allTasks.getResult().get(1).getDocuments().get(position-dimTaskuri1).getId();
-                           fragmentCurent=InformatiiAditionaleStudentFragment.newInstance(idMaterie);
+                           fragmentCurent=InformatiiAditionaleStudentFragment.newInstance(idMaterie,userPrimit);
                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentCurent).commit();
 
                        }

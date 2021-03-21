@@ -8,20 +8,20 @@ public class Sarcina implements Serializable {
     private String tipFisierDorit;
     private String dataDeadline;
     private String oraDeadline;
-    private int notaAcordata;
     private String nrSaptDeadline;
+    private String titlu;
 
     public Sarcina() {
     }
 
-    public Sarcina(String descriere, String idMaterie, String tipFisierDorit, String dataDeadline, String oraDeadline, int notaAcordata, String nrSaptDeadline) {
+    public Sarcina(String descriere, String idMaterie, String tipFisierDorit, String dataDeadline, String oraDeadline, String nrSaptDeadline, String titlu) {
         this.descriere = descriere;
         this.idMaterie = idMaterie;
         this.tipFisierDorit = tipFisierDorit;
         this.dataDeadline = dataDeadline;
         this.oraDeadline = oraDeadline;
-        this.notaAcordata = notaAcordata;
         this.nrSaptDeadline = nrSaptDeadline;
+        this.titlu = titlu;
     }
 
     public String getDescriere() {
@@ -64,19 +64,19 @@ public class Sarcina implements Serializable {
         this.oraDeadline = oraDeadline;
     }
 
-    public int getNotaAcordata() {
-        return notaAcordata;
-    }
-
-    public void setNotaAcordata(int notaAcordata) {
-        this.notaAcordata = notaAcordata;
-    }
-
     public String getNrSaptDeadline() {
         return nrSaptDeadline;
     }
 
     public void setNrSaptDeadline(String nrSaptDeadline) {
         this.nrSaptDeadline = nrSaptDeadline;
+    }
+
+    public String getTitlu() {
+        return titlu;
+    }
+
+    public void setTitlu(String titlu) {
+        this.titlu = titlu;
     }
 }
