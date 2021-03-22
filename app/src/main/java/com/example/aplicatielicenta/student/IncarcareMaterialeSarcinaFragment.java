@@ -169,6 +169,12 @@ String idFisier;
                     case "word":
                         intent.setType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
                         break;
+                    case"txt":
+                        intent.setType("text/plain");
+                        break;
+                    case "zip":
+                        intent.setType("application/zip");
+                        break;
 
                 }
                 intent.setAction(Intent.ACTION_GET_CONTENT);

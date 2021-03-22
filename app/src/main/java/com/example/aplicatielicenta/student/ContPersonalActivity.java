@@ -104,9 +104,6 @@ FirebaseAuth firebaseAuth;
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.logoutAplicatie){
             firebaseAuth.signOut();
-            Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
 
 
         }
