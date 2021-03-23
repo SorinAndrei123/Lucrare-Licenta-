@@ -1,6 +1,7 @@
 package com.example.aplicatielicenta.student;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,22 +9,39 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.MimeTypeMap;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.aplicatielicenta.R;
 import com.example.aplicatielicenta.logare.MainActivity;
+import com.example.aplicatielicenta.profesor.ContPersonalProfesorActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import utilitare.general.User;
 
@@ -34,8 +52,11 @@ User user=new User();
 TextView numeCont,email;
 NavigationView navigationView;
 View headerView;
+StorageReference storageReference;
+ImageView imagineProfil;
 FirebaseFirestore firebaseFirestore;
 FirebaseAuth firebaseAuth;
+    static final int REQUEST_CODE=1111;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,10 +70,13 @@ FirebaseAuth firebaseAuth;
         toggle.syncState();
         navigationView=findViewById(R.id.nav_view);
         firebaseAuth=FirebaseAuth.getInstance();
+        storageReference=FirebaseStorage.getInstance().getReference("pozeProfil");
         selectareFragmente();
         headerView=navigationView.getHeaderView(0);
         numeCont=headerView.findViewById(R.id.mainPageTextViewNume);
         email=headerView.findViewById(R.id.mainPageTextViewEmail);
+        imagineProfil=headerView.findViewById(R.id.imageViewImagineProfil);
+        storageReference= FirebaseStorage.getInstance().getReference("pozeProfil");
         firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseFirestore.collection("Studenti").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -62,7 +86,29 @@ FirebaseAuth firebaseAuth;
                 user=documentSnapshot.toObject(User.class);
                 numeCont.setText(user.getNume());
                 email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                    storageReference.child(user.getNume()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Picasso.get().load(uri).fit().centerCrop().into(imagineProfil);
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(ContPersonalActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
                 }
+            }
+        });
+        imagineProfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                storageReference.child(user.getNume()+".jpg").delete();
+                Intent intent=new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent,REQUEST_CODE);
             }
         });
 
@@ -108,5 +154,41 @@ FirebaseAuth firebaseAuth;
 
         }
         return true;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==REQUEST_CODE && resultCode==RESULT_OK){
+            Uri imageUri=data.getData();
+            try {
+                InputStream inputStream=getContentResolver().openInputStream(imageUri);
+                Bitmap imagineSelectata= BitmapFactory.decodeStream(inputStream);
+                imagineProfil.setImageBitmap(imagineSelectata);
+                uploadPoza(imageUri);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    private void uploadPoza(Uri uri) {
+        StorageReference referinta=storageReference.child(user.getNume()+"."+getFileExtension(uri));
+        referinta.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private String getFileExtension(Uri uri){
+        ContentResolver contentResolver=getApplicationContext().getContentResolver();
+        MimeTypeMap mimeTypeMap=MimeTypeMap.getSingleton();
+        return  mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 }

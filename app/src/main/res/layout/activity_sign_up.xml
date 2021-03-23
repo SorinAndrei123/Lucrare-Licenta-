@@ -10,47 +10,77 @@
        android:layout_height="wrap_content"
        android:orientation="vertical">
 
+
        <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
+           android:layout_width="match_parent"
+           android:layout_height="112dp"
+           android:background="@color/colorPrimary"
+           android:paddingLeft="70dp"
            android:text="Inregistrare"
            android:textSize="40dp"
-           android:layout_marginLeft="80dp">
+           android:paddingTop="40dp"
+           android:textColor="@color/white"
+           android:textStyle="bold">
 
        </TextView>
 
-       <EditText
+       <View
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="70dp"
+           android:layout_height="138dp"
+           android:background="@drawable/wave">
+
+       </View>
+
+       <EditText
            android:id="@+id/editTextNumeSignUp"
-           android:hint="Numele complet">
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="80dp"
+           android:hint="Numele complet"
+           android:drawableStart="@drawable/ic_baseline_account_circle_24"
+           android:drawablePadding="16dp"
+           android:padding="16dp"
+           android:background="@drawable/round_border"
+
+           >
 
        </EditText>
+
        <EditText
+           android:id="@+id/editTextMailSignUp"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_marginTop="70dp"
-           android:id="@+id/editTextMailSignUp"
-           android:hint="Adresa de mail">
+           android:hint="Adresa de mail"
+           android:padding="16dp"
+           android:background="@drawable/round_border"
+           android:drawableStart="@drawable/ic_email"
+           android:drawablePadding="16dp">
 
        </EditText>
+
        <EditText
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_marginTop="70dp"
            android:id="@+id/editTextParolaSignUp"
            android:hint="@string/parola"
-           android:inputType="textPassword">
+           android:inputType="textPassword"
+           android:padding="10dp"
+           android:background="@drawable/round_border"
+           android:drawableStart="@drawable/ic_lock"
+           android:drawablePadding="16dp">
 
 
        </EditText>
-
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_marginTop="60dp"
            android:text="Tip Cont"
+           android:textStyle="bold"
+           android:textSize="21dp"
+           android:textColor="@color/colorPrimary"
            >
 
        </TextView>
@@ -67,6 +97,10 @@
                android:layout_height="wrap_content"
                android:id="@+id/radioButonProfesor"
                android:text="Profesor"
+               android:buttonTint="@color/colorPrimary"
+               android:textColor="@color/colorPrimary"
+               android:textStyle="bold"
+               android:textSize="20dp"
                android:layout_marginLeft="40dp">
 
            </RadioButton>
@@ -76,7 +110,11 @@
                android:layout_height="wrap_content"
                android:id="@+id/radioButonStudent"
                android:text="Student"
-               android:layout_marginLeft="60dp">
+               android:buttonTint="@color/colorPrimary"
+               android:layout_marginLeft="60dp"
+               android:textColor="@color/colorPrimary"
+               android:textStyle="bold"
+               android:textSize="20dp">
 
            </RadioButton>
 
@@ -97,6 +135,10 @@
                android:layout_height="wrap_content"
                android:text="An 1"
                android:layout_marginLeft="30dp"
+               android:buttonTint="@color/colorPrimary"
+               android:textColor="@color/colorPrimary"
+               android:textStyle="bold"
+               android:textSize="20dp"
                android:id="@+id/radioButonAn1">
 
            </RadioButton>
@@ -106,6 +148,10 @@
                android:layout_height="wrap_content"
                android:text="An 2"
                android:layout_marginLeft="60dp"
+               android:buttonTint="@color/colorPrimary"
+               android:textColor="@color/colorPrimary"
+               android:textStyle="bold"
+               android:textSize="20dp"
                android:id="@+id/radioButonAn2">
 
            </RadioButton>
@@ -114,6 +160,10 @@
                android:layout_height="wrap_content"
                android:text="An 3"
                android:id="@+id/radioButonAn3"
+               android:buttonTint="@color/colorPrimary"
+               android:textColor="@color/colorPrimary"
+               android:textStyle="bold"
+               android:textSize="20dp"
                android:layout_marginLeft="60dp"
                >
 
@@ -126,7 +176,10 @@
            android:layout_height="wrap_content"
            android:text="Grupa"
            android:visibility="invisible"
-           android:layout_marginTop="40dp">
+           android:layout_marginTop="40dp"
+           android:textStyle="bold"
+           android:textSize="21dp"
+           android:textColor="@color/colorPrimary">
 
        </TextView>
        <Spinner
@@ -144,11 +197,17 @@
            android:layout_marginTop="40dp">
 
        </ProgressBar>
+
        <Button
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
+           android:id="@+id/butonSignUp"
+           android:layout_width="389dp"
+           android:layout_height="41dp"
+           android:background="@drawable/round_bg"
            android:text="Sign up"
-           android:id="@+id/butonSignUp">
+           android:textColor="@color/white"
+           android:textSize="18sp"
+           android:textStyle="bold"
+           app:backgroundTint="@color/colorPrimary">
 
        </Button>
 

@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
+import utilitare.general.AdaptorSpinnerGrupa;
 import utilitare.general.User;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -36,7 +37,7 @@ public class SignUpActivity extends AppCompatActivity {
     Spinner spinner;
     FirebaseAuth auth;
     List<String> grupe = new ArrayList<>();
-    ArrayAdapter<String> adaptor;
+    AdaptorSpinnerGrupa adaptor;
     FirebaseFirestore firebaseFirestore;
     User user=new User();
     int an;
@@ -83,7 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
                     grupe.add("1007");
                     grupe.add("1008");
                     grupe.add("1009");
-                    adaptor=new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,grupe);
+                    adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
                     spinner.setAdapter(adaptor);
 
 
@@ -98,7 +99,7 @@ public class SignUpActivity extends AppCompatActivity {
                     grupe.add("1045");
                     grupe.add("1046");
                     grupe.add("1047");
-                    adaptor=new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,grupe);
+                    adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
                     spinner.setAdapter(adaptor);
 
                 }
@@ -111,7 +112,7 @@ public class SignUpActivity extends AppCompatActivity {
                     grupe.add("1076");
                     grupe.add("1077");
                     grupe.add("1078");
-                    adaptor=new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,grupe);
+                    adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
                     spinner.setAdapter(adaptor);
 
                 }
