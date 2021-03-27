@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/nav_bottom_private_messages"
+    android:title="Private messages"
+    android:icon="@drawable/ic_privacy"/>
+
+    <item android:id="@+id/nav__bottom_group_messages"
+        android:title="Group messages"
+        android:icon="@drawable/ic_group"/>
+    <item android:id="@+id/nav_bottom_calls"
+        android:title="Calls"
+        android:icon="@drawable/ic_call"/>
+
+</menu>

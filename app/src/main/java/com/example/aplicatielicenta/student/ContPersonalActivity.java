@@ -25,12 +25,15 @@ import android.widget.Toast;
 
 
 import com.example.aplicatielicenta.R;
+import com.example.aplicatielicenta.general.ChatAlegereGrupFragment;
+import com.example.aplicatielicenta.general.ChatMainFragment;
 import com.example.aplicatielicenta.logare.MainActivity;
 import com.example.aplicatielicenta.profesor.ContPersonalProfesorActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -38,6 +41,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
@@ -56,6 +60,7 @@ StorageReference storageReference;
 ImageView imagineProfil;
 FirebaseFirestore firebaseFirestore;
 FirebaseAuth firebaseAuth;
+ChipNavigationBar bottomNavigationView;
     static final int REQUEST_CODE=1111;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,8 @@ FirebaseAuth firebaseAuth;
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         navigationView=findViewById(R.id.nav_view);
+        bottomNavigationView=findViewById(R.id.bottom_navigation_view_chat);
+        bottomNavigationView.setVisibility(View.INVISIBLE);
         firebaseAuth=FirebaseAuth.getInstance();
         storageReference=FirebaseStorage.getInstance().getReference("pozeProfil");
         selectareFragmente();
@@ -112,6 +119,16 @@ FirebaseAuth firebaseAuth;
             }
         });
 
+        bottomNavigationView.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(int i) {
+                if(bottomNavigationView.getSelectedItemId()==R.id.nav__bottom_group_messages){
+                    fragmentulSelectat= ChatAlegereGrupFragment.newInstance(user);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
+                }
+            }
+        });
+
     }
 
     private void selectareFragmente() {
@@ -121,12 +138,23 @@ FirebaseAuth firebaseAuth;
                if(item.getItemId()==R.id.nav_timetable){
                    fragmentulSelectat= ScheduleFragment.newInstance(user);
                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
+
+                   bottomNavigationView.setVisibility(View.INVISIBLE);
                    drawerLayout.closeDrawer(GravityCompat.START);
+
+               }
+               else if(item.getItemId()==R.id.nav_chat_item){
+                   fragmentulSelectat= ChatAlegereGrupFragment.newInstance(user);
+                   getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
+                   drawerLayout.closeDrawer(GravityCompat.START);
+                   bottomNavigationView.setVisibility(View.VISIBLE);
+                  // bottomNavigationView.setItemSelected(R.id.nav__bottom_group_messages,true);
                }
                 return true;
             }
         });
     }
+
 
 
     @Override
