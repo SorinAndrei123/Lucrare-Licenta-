@@ -40,7 +40,6 @@ static final String KEY="CHEIE";
 DatabaseReference databaseReference;
 List<String>listaNumeGrupuri=new ArrayList<>();
 List<ChatMessage>listaUltimulMesaj=new ArrayList<>();
-List<Uri>listaUri=new ArrayList<>();
 StorageReference storageReference;
 AdaptorPreviewConversatie adaptorPreviewConversatie;
 
@@ -108,8 +107,6 @@ AdaptorPreviewConversatie adaptorPreviewConversatie;
                         }
                         adaptorPreviewConversatie=new AdaptorPreviewConversatie(listaNumeGrupuri,listaUltimulMesaj,storageReference);
                         grupuri.setAdapter(adaptorPreviewConversatie);
-                        Toast.makeText(getContext().getApplicationContext(), String.valueOf(listaUltimulMesaj.size()), Toast.LENGTH_SHORT).show();
-
                     }
 
                     @Override
@@ -118,7 +115,6 @@ AdaptorPreviewConversatie adaptorPreviewConversatie;
                     }
 
                 });
-              //  adaptorPreviewConversatie.notifyDataSetChanged();
             }
 
             @Override

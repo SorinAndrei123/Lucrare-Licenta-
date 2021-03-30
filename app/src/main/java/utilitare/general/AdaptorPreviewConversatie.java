@@ -1,5 +1,6 @@
 package utilitare.general;
 
+import android.graphics.Color;
 import android.net.Uri;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -14,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aplicatielicenta.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.StorageReference;
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
@@ -39,15 +42,16 @@ public class AdaptorPreviewConversatie extends RecyclerView.Adapter<AdaptorPrevi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.numePersoana.setText(this.numeGrupuri.get(position));
         holder.ultimulMesaj.setText(this.messages.get(position).getMessageText());
-        holder.ora.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
+        holder.ora.setText(DateFormat.format("(HH:mm:ss)",
                 this.messages.get(position).getMessageTime()));
+
+        Transformation transformation=new RoundedTransformationBuilder().borderColor(Color.BLACK).borderWidthDp(3).cornerRadiusDp(30).oval(false).build();
         storageReference.child(this.numeGrupuri.get(position)+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).fit().centerCrop().into(holder.imagineProfil);
+                Picasso.get().load(uri).fit().transform(transformation).into(holder.imagineProfil);
             }
         });
-      //  Picasso.get().load(this.poze.get(position)).fit().centerCrop().into(holder.imagineProfil);
 
     }
 

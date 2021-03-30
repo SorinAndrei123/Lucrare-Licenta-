@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/textViewNumePersoanaMesaj"
-        android:layout_width="202dp"
-        android:layout_height="33dp"
+        android:layout_width="209dp"
+        android:layout_height="48dp"
         android:layout_marginTop="4dp"
         android:text="nume"
         android:textColor="@color/white"
@@ -39,12 +39,12 @@
         android:id="@+id/textViewMesaj"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="64dp"
         android:text="mesaj"
-        android:textStyle="bold"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp">
+        tools:layout_editor_absoluteX="0dp">
 
     </TextView>
 

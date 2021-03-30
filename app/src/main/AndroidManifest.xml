@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AplicatieLicenta">
-        <activity android:name=".profesor.CreareTaskProfesorActivity"></activity>
+        <activity android:name=".general.AlegereContactActivity"></activity>
+        <activity android:name=".profesor.CreareTaskProfesorActivity" />
         <activity android:name=".profesor.ContPersonalProfesorActivity" />
         <activity android:name=".student.ContPersonalActivity" />
         <activity android:name=".logare.ResetareParolaActivity" />

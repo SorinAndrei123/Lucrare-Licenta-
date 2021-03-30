@@ -126,6 +126,11 @@ ChipNavigationBar bottomNavigationView;
                     fragmentulSelectat= ChatAlegereGrupFragment.newInstance(user);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
                 }
+                else if(bottomNavigationView.getSelectedItemId()==R.id.nav_bottom_private_messages){
+                    fragmentulSelectat=PrivateChatFragment.newInstance(user);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
+
+                }
             }
         });
 

@@ -38,6 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
     FirebaseAuth auth;
     List<String> grupe = new ArrayList<>();
     AdaptorSpinnerGrupa adaptor;
+    ArrayAdapter adapter;
     FirebaseFirestore firebaseFirestore;
     User user=new User();
     int an;
@@ -84,8 +85,9 @@ public class SignUpActivity extends AppCompatActivity {
                     grupe.add("1007");
                     grupe.add("1008");
                     grupe.add("1009");
-                    adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
-                    spinner.setAdapter(adaptor);
+                    adapter=new ArrayAdapter(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,grupe);
+                  //  adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
+                    spinner.setAdapter(adapter);
 
 
 
@@ -99,8 +101,9 @@ public class SignUpActivity extends AppCompatActivity {
                     grupe.add("1045");
                     grupe.add("1046");
                     grupe.add("1047");
-                    adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
-                    spinner.setAdapter(adaptor);
+                    adapter=new ArrayAdapter(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,grupe);
+                  //  adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
+                    spinner.setAdapter(adapter);
 
                 }
                 else if(checkedId==R.id.radioButonAn3){
@@ -112,8 +115,9 @@ public class SignUpActivity extends AppCompatActivity {
                     grupe.add("1076");
                     grupe.add("1077");
                     grupe.add("1078");
-                    adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
-                    spinner.setAdapter(adaptor);
+                    adapter=new ArrayAdapter(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,grupe);
+                   // adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
+                    spinner.setAdapter(adapter);
 
                 }
             }
