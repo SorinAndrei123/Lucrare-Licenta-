@@ -8,11 +8,12 @@ public class Materie {
     private String ora;
     private  String grupa;
     private String serie;
+    private String an;
 
     public Materie() {
     }
 
-    public Materie(String nume, String profesor, String tip, String zi, String ora, String grupa, String serie) {
+    public Materie(String nume, String profesor, String tip, String zi, String ora, String grupa, String serie,String an) {
         this.nume = nume;
         this.profesor = profesor;
         this.tip = tip;
@@ -20,6 +21,7 @@ public class Materie {
         this.ora = ora;
         this.grupa = grupa;
         this.serie = serie;
+        this.an=an;
     }
 
     public Materie(String nume, String profesor, String tip, String zi, String ora, String grupa) {
@@ -31,6 +33,14 @@ public class Materie {
         this.grupa = grupa;
     }
 
+
+    public String getAn() {
+        return an;
+    }
+
+    public void setAn(String an) {
+        this.an = an;
+    }
 
     public String getNume() {
         return nume;

@@ -47,7 +47,6 @@ StorageReference storageReference;
 AdaptorPreviewConversatie adaptorPreviewConversatie;
 List<String>numeGrupuri=new ArrayList<>();
 DatabaseReference databaseReference;
-HashMap<String,ChatMessage>hashMap=new HashMap<>();
     public PrivateChatFragment() {
     }
 
@@ -111,12 +110,18 @@ HashMap<String,ChatMessage>hashMap=new HashMap<>();
                            public void onDataChange(@NonNull DataSnapshot snapshot) {
                                for(DataSnapshot dataSnapshot1:snapshot.getChildren()){
                                    String mesajText=dataSnapshot1.child("messageText").getValue().toString();
-                                   String user=dataSnapshot1.child("messageUser").getValue().toString();
+                                   String usernume=dataSnapshot1.child("messageUser").getValue().toString();
                                    String time=dataSnapshot1.child("messageTime").getValue().toString();
                                    ChatMessage chatMessage=new ChatMessage();
-                                   chatMessage.setMessageUser(user);
+                                   chatMessage.setMessageUser(usernume);
                                    chatMessage.setMessageTime(Long.valueOf(time));
                                    chatMessage.setMessageText(mesajText);
+                                   if(usernume.equals(user.getNume())){
+                                       chatMessage.setSentByMe(true);
+                                   }
+                                   else{
+                                       chatMessage.setSentByMe(false);
+                                   }
                                    listaMesaje.add(chatMessage);
                                }
                                adaptorPreviewConversatie=new AdaptorPreviewConversatie(numeGrupuri,listaMesaje,storageReference);
@@ -141,35 +146,6 @@ HashMap<String,ChatMessage>hashMap=new HashMap<>();
             }
         });
 
-      /*  databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    String mesajText=dataSnapshot.child("messageText").getValue().toString();
-                    String user=dataSnapshot.child("messageUser").getValue().toString();
-                    String time=dataSnapshot.child("messageTime").getValue().toString();
-                    ChatMessage chatMessage=new ChatMessage();
-                    chatMessage.setMessageUser(user);
-                    chatMessage.setMessageTime(Long.valueOf(time));
-                    chatMessage.setMessageText(mesajText);
-                    hashMap.put(chatMessage.getMessageUser(),chatMessage);
-                }
-                for(String user:hashMap.keySet()){
-                    numeGrupuri.add(user);
-                }
-                for(ChatMessage chatMessage:hashMap.values()){
-                    listaMesaje.add(chatMessage);
-                }
-                adaptorPreviewConversatie=new AdaptorPreviewConversatie(numeGrupuri,listaMesaje,storageReference);
-                recyclerViewMesaje.setAdapter(adaptorPreviewConversatie);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-*/
 
 recyclerViewMesaje.addOnItemTouchListener(new RecyclerItemClickListener(view.getContext(), recyclerViewMesaje, new RecyclerItemClickListener.OnItemClickListener() {
     @Override

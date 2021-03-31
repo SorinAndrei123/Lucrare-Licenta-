@@ -17,6 +17,7 @@
         <activity android:name=".profesor.ContPersonalProfesorActivity" />
         <activity android:name=".student.ContPersonalActivity" />
         <activity android:name=".logare.ResetareParolaActivity" />
+        <activity android:name=".profesor.AlegereContactActivityProfesor" />
         <activity android:name=".logare.SignUpActivity" />
         <activity android:name=".logare.MainActivity">
             <intent-filter>

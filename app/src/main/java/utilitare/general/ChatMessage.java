@@ -6,14 +6,16 @@ public class ChatMessage {
     private String messageText;
     private String messageUser;
     private long messageTime;
+    private boolean sentByMe;
 
     public ChatMessage() {
     }
 
-    public ChatMessage(String messageText, String messageUser) {
+    public ChatMessage(String messageText, String messageUser ) {
         this.messageText = messageText;
         this.messageUser = messageUser;
         this.messageTime=new Date().getTime();
+        this.sentByMe=true;
     }
 
     public String getMessageText() {
@@ -38,5 +40,13 @@ public class ChatMessage {
 
     public void setMessageTime(long messageTime) {
         this.messageTime = messageTime;
+    }
+
+    public boolean isSentByMe() {
+        return sentByMe;
+    }
+
+    public void setSentByMe(boolean sentByMe) {
+        this.sentByMe = sentByMe;
     }
 }

@@ -25,7 +25,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.aplicatielicenta.R;
+import com.example.aplicatielicenta.general.ChatAlegereGrupFragment;
 import com.example.aplicatielicenta.profesor.ScheduleFragmentProfesor;
+import com.example.aplicatielicenta.student.PrivateChatFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,6 +39,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
@@ -56,6 +59,8 @@ FirebaseAuth firebaseAuth;
 ImageView imagineProfil;
 static final int REQUEST_CODE=245;
 StorageReference storageReference;
+ChipNavigationBar bottomNavigationView;
+
 
 
 
@@ -83,6 +88,8 @@ StorageReference storageReference;
         email=headerView.findViewById(R.id.mainPageTextViewEmail);
         imagineProfil=headerView.findViewById(R.id.imageViewImagineProfil);
         firebaseFirestore=FirebaseFirestore.getInstance();
+        bottomNavigationView=findViewById(R.id.bottom_navigation_view_chat_prof);
+        bottomNavigationView.setVisibility(View.INVISIBLE);
         firebaseFirestore.collection("Profesori").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -119,7 +126,22 @@ imagineProfil.setOnClickListener(new View.OnClickListener() {
         startActivityForResult(intent,REQUEST_CODE);
     }
 });
+        bottomNavigationView.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(int i) {
+                if(bottomNavigationView.getSelectedItemId()==R.id.nav__bottom_group_messages){
+                    fragment= ChatAlegereGrupFragmentProfesor.newInstance(user);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_profesor,fragment).commit();
+                }
+                else if(bottomNavigationView.getSelectedItemId()==R.id.nav_bottom_private_messages){
+                    fragment=PrivateChatFragmentProfesor.newInstance(user);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_profesor,fragment).commit();
 
+
+
+                }
+            }
+        });
 
     }
 
@@ -130,7 +152,15 @@ imagineProfil.setOnClickListener(new View.OnClickListener() {
                 if(item.getItemId()==R.id.nav_timetable_profesor){
                     fragment= ScheduleFragmentProfesor.newInstance(user);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_profesor,fragment).commit();
+                    bottomNavigationView.setVisibility(View.INVISIBLE);
                     drawerLayout.closeDrawer(GravityCompat.START);
+
+                }
+                else if(item.getItemId()==R.id.nav_chat_item_profesor){
+                    fragment= ChatAlegereGrupFragmentProfesor.newInstance(user);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_profesor,fragment).commit();
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    bottomNavigationView.setVisibility(View.VISIBLE);
 
                 }
                 return true;

@@ -42,8 +42,6 @@ EditText mesajDeTrimis;
 AdaptorMesaj adaptorMesaj;
 DatabaseReference databaseReference;
 List<ChatMessage>listaMesaje=new ArrayList<>();
-List<ChatMessage>listaMesajeDestinatar=new ArrayList<>();
-List<ChatMessage>listaMesajeContCurent=new ArrayList<>();
 String numeReferinta1;
 String numeReferinta2;
     boolean esteRef1=false;
@@ -100,12 +98,19 @@ String numeReferinta2;
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                             String mesajText=snapshot.child("messageText").getValue().toString();
-                            String user=snapshot.child("messageUser").getValue().toString();
+                            String usernume=snapshot.child("messageUser").getValue().toString();
                             String time=snapshot.child("messageTime").getValue().toString();
                             ChatMessage chatMessage=new ChatMessage();
-                            chatMessage.setMessageUser(user);
+                            chatMessage.setMessageUser(usernume);
                             chatMessage.setMessageTime(Long.valueOf(time));
                             chatMessage.setMessageText(mesajText);
+                            if(usernume.equals(user.getNume())){
+                                chatMessage.setSentByMe(true);
+                            }
+                            else{
+                                chatMessage.setSentByMe(false);
+                            }
+
                             listaMesaje.add(chatMessage);
                             adaptorMesaj.notifyDataSetChanged();
                         }
@@ -136,12 +141,18 @@ String numeReferinta2;
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                             String mesajText=snapshot.child("messageText").getValue().toString();
-                            String user=snapshot.child("messageUser").getValue().toString();
+                            String usernume=snapshot.child("messageUser").getValue().toString();
                             String time=snapshot.child("messageTime").getValue().toString();
                             ChatMessage chatMessage=new ChatMessage();
-                            chatMessage.setMessageUser(user);
+                            chatMessage.setMessageUser(usernume);
                             chatMessage.setMessageTime(Long.valueOf(time));
                             chatMessage.setMessageText(mesajText);
+                            if(usernume.equals(user.getNume())){
+                                chatMessage.setSentByMe(true);
+                            }
+                            else{
+                                chatMessage.setSentByMe(false);
+                            }
                             listaMesaje.add(chatMessage);
                             adaptorMesaj.notifyDataSetChanged();
                         }
