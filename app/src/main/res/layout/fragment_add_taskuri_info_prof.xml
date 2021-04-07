@@ -15,8 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Link Zoom"
-            android:textSize="20dp"
-            android:layout_marginBottom="40dp">
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_marginBottom="40dp"
+            android:drawableStart="@drawable/external_link_symbol"
+            android:drawablePadding="16dp">
 
         </TextView>
 
@@ -26,6 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:hint="Link Conectare"
+            android:padding="16dp"
+            android:background="@drawable/round_border"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,6 +44,7 @@
             android:layout_marginLeft="320dp"
             android:layout_marginTop="80dp"
             android:clickable="true"
+            android:background="@color/colorPrimary"
             android:src="@android:drawable/ic_dialog_info"
 
             />
@@ -53,6 +60,9 @@
             android:layout_marginBottom="28dp"
             android:layout_marginTop="20dp"
             android:text="Saptamana 1"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/recyclerViewSapt1"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -80,6 +90,9 @@
             android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"
             android:layout_marginBottom="68dp"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -91,6 +104,11 @@
             android:layout_marginLeft="52dp"
             android:layout_marginBottom="4dp"
             android:text="Creeaza task nou"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/colorPrimary"
+            android:background="@drawable/round_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </LinearLayout>

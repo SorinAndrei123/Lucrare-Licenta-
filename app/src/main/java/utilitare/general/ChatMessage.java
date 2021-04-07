@@ -15,7 +15,6 @@ public class ChatMessage {
         this.messageText = messageText;
         this.messageUser = messageUser;
         this.messageTime=new Date().getTime();
-        this.sentByMe=true;
     }
 
     public String getMessageText() {

@@ -10,6 +10,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/textViewDescriereTaskDetalii"
+    android:textSize="16sp"
+    android:textColor="@color/colorPrimary"
+    android:textStyle="bold"
+    android:drawableStart="@drawable/description"
+    android:drawablePadding="16dp"
   android:layout_marginTop="40dp"
   android:text="Descriere task">
 
@@ -19,6 +24,11 @@
       android:layout_height="wrap_content"
     android:id="@+id/textViewTermenLimita"
     android:layout_marginTop="40dp"
+      android:textSize="16sp"
+      android:textColor="@color/colorPrimary"
+      android:textStyle="bold"
+      android:drawableStart="@drawable/deadline"
+      android:drawablePadding="16dp"
     android:text="Termen limita">
 
   </TextView>
@@ -27,7 +37,13 @@
       android:layout_height="wrap_content"
       android:id="@+id/textViewTipFisierDetalii"
       android:text="Tip fisier"
-      android:layout_marginTop="40dp">
+      android:layout_marginTop="40dp"
+      android:textSize="16sp"
+      android:textColor="@color/colorPrimary"
+      android:textStyle="bold"
+      android:drawableStart="@drawable/paperclip"
+      android:drawablePadding="16dp"
+      >
 
   </TextView>
 
@@ -36,7 +52,12 @@
       android:layout_height="wrap_content"
     android:id="@+id/textViewTemeDeEvaluat"
       android:layout_marginTop="40dp"
-      android:text="Teme de evaluat">
+      android:text="Teme de evaluat"
+      android:textSize="16sp"
+      android:textColor="@color/colorPrimary"
+      android:textStyle="bold"
+      android:drawablePadding="16dp"
+      android:drawableStart="@drawable/homework">
 
   </TextView>
 <androidx.recyclerview.widget.RecyclerView

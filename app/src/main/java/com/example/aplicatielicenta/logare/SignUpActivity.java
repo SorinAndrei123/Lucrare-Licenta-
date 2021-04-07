@@ -80,11 +80,19 @@ public class SignUpActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(checkedId==R.id.radioButonAn1){
                     grupe.clear();
+                    grupe.add("1000");
+                    grupe.add("1001");
+                    grupe.add("1002");
+                    grupe.add("1003");
+                    grupe.add("1004");
                     grupe.add("1005");
                     grupe.add("1006");
                     grupe.add("1007");
                     grupe.add("1008");
                     grupe.add("1009");
+                    grupe.add("1010");
+                    grupe.add("1011");
+                    grupe.add("1012");
                     adapter=new ArrayAdapter(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,grupe);
                   //  adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
                     spinner.setAdapter(adapter);
@@ -94,6 +102,11 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 else if(checkedId==R.id.radioButonAn2){
                     grupe.clear();
+                    grupe.add("1036");
+                    grupe.add("1037");
+                    grupe.add("1038");
+                    grupe.add("1039");
+                    grupe.add("1040");
                     grupe.add("1041");
                     grupe.add("1042");
                     grupe.add("1043");
@@ -101,6 +114,9 @@ public class SignUpActivity extends AppCompatActivity {
                     grupe.add("1045");
                     grupe.add("1046");
                     grupe.add("1047");
+                    grupe.add("1048");
+                    grupe.add("1049");
+                    grupe.add("1050");
                     adapter=new ArrayAdapter(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,grupe);
                   //  adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
                     spinner.setAdapter(adapter);
@@ -108,6 +124,9 @@ public class SignUpActivity extends AppCompatActivity {
                 }
                 else if(checkedId==R.id.radioButonAn3){
                     grupe.clear();
+                    grupe.add("1069");
+                    grupe.add("1070");
+                    grupe.add("1071");
                     grupe.add("1072");
                     grupe.add("1073");
                     grupe.add("1074");
@@ -115,6 +134,10 @@ public class SignUpActivity extends AppCompatActivity {
                     grupe.add("1076");
                     grupe.add("1077");
                     grupe.add("1078");
+                    grupe.add("1079");
+                    grupe.add("1080");
+                    grupe.add("1081");
+                    grupe.add("1082");
                     adapter=new ArrayAdapter(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,grupe);
                    // adaptor=new AdaptorSpinnerGrupa(getApplicationContext(),grupe);
                     spinner.setAdapter(adapter);
@@ -167,8 +190,17 @@ public class SignUpActivity extends AppCompatActivity {
                     else if(radioGroup.getCheckedRadioButtonId()==R.id.radioButonAn3){
                         user.setAn(3);
                     }
-                    user.setGrupa(Integer.parseInt(spinner.getSelectedItem().toString().trim()));
-                    user.setSerie("C");
+                    int grupa=Integer.parseInt(spinner.getSelectedItem().toString().trim());
+                    user.setGrupa(grupa);
+                    if(grupa==1000 || grupa==1001 || grupa==1002 || grupa==1036 ||grupa==1037 || grupa==1038 ||grupa==1039 || grupa==1069 ||grupa==1070 ||grupa==1071){
+                        user.setSerie("A");
+                    }
+                    else if(grupa==1003 ||grupa==1004 ||grupa==1005 ||grupa==1006 || grupa==1040 ||grupa==1041 ||grupa==1042 ||grupa==1043 ||grupa==1072 ||grupa==1073 ||grupa==1074){
+                        user.setSerie("B");
+                    }
+                    else{
+                        user.setSerie("C");
+                    }
                 }
 
 

@@ -11,7 +11,13 @@
         android:layout_width="221dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
         android:text="Nume Student"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:drawableStart="@drawable/name"
+        android:drawablePadding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -25,6 +31,8 @@
         android:layout_marginLeft="220dp"
         android:layout_marginTop="16dp"
         android:hint="Nota de acordat"
+        android:paddingLeft="4dp"
+        android:background="@drawable/round_border"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

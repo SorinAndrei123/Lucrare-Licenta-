@@ -35,6 +35,11 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import utilitare.general.Sarcina;
 import utilitare.general.UploadFisier;
 import utilitare.general.User;
@@ -116,6 +121,33 @@ String idFisier;
                     tipFisier.setText("Tip fisier acceptat: "+sarcina.getTipFisierDorit());
 
                 }
+                Calendar calendar=Calendar.getInstance();
+                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM");
+                String dataCurenta=simpleDateFormat.format(calendar.getTime());
+                String dataSarcina=sarcina.getDataDeadline();
+                boolean este_outdated;
+                try {
+                    Date dataFormatata=simpleDateFormat.parse(dataSarcina);
+                    if(dataCurenta.compareTo(dataCurenta)<0){
+                        este_outdated=true;
+                       //Toast.makeText(getContext().getApplicationContext(), "Nu se mai poate incarca.", Toast.LENGTH_SHORT).show();
+                        //progressBar.setVisibility(View.GONE);
+                        //alegereFisier.setVisibility(View.GONE);
+                    }
+                    else{
+                        este_outdated=false;
+                    }
+                    if(este_outdated){
+                       Toast.makeText(getContext().getApplicationContext(), "este outdated", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(getContext().getApplicationContext(), "nu este outdated", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -123,6 +155,7 @@ String idFisier;
 
             }
         });
+
         firebaseFirestore.collection("Fisiere").whereEqualTo("idSarcina",idSarcina).whereEqualTo("numeStudent",user.getNume()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -143,6 +176,7 @@ String idFisier;
 
 
                                     }
+
                                 }
                             }
                         }).addOnFailureListener(new OnFailureListener() {

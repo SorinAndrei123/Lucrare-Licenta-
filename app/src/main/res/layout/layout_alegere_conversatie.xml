@@ -7,46 +7,84 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="30dp">
 
-    <TextView
-        android:id="@+id/textViewNumeConversatie"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="4dp"
-        android:text="nume"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewUltimulMesaj"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="40dp"
-        android:text="ultimul mesaj"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </TextView>
-
-    <TextView
-        android:id="@+id/textViewOraMesaj"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:text="ora mesaj"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imagineProfil"
-        android:layout_width="85dp"
-        android:layout_height="70dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:background="@color/colorPrimary">
+
+        <com.github.florent37.shapeofview.shapes.RoundRectView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shape_roundRect_borderColor="@android:color/black"
+            app:shape_roundRect_borderWidth="2dp"
+            app:shape_roundRect_bottomLeftRadius="10dp"
+            app:shape_roundRect_bottomRightRadius="10dp"
+
+            app:shape_roundRect_topLeftRadius="10dp"
+            app:shape_roundRect_topRightRadius="10dp">
+
+            <TextView
+                android:id="@+id/textViewNumeConversatie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="99dp"
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:text="nume"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewUltimulMesaj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="160dp"
+                android:layout_marginLeft="160dp"
+                android:layout_marginTop="40dp"
+                android:text="ultimul mesaj"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/textViewOraMesaj"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="320dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:text="ora mesaj"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imagineProfil"
+                android:layout_width="85dp"
+                android:layout_height="70dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+        </com.github.florent37.shapeofview.shapes.RoundRectView>
+
+    </LinearLayout>
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

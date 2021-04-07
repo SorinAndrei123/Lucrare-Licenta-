@@ -153,7 +153,7 @@ ChipNavigationBar bottomNavigationView;
                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
                    drawerLayout.closeDrawer(GravityCompat.START);
                    bottomNavigationView.setVisibility(View.VISIBLE);
-                  // bottomNavigationView.setItemSelected(R.id.nav__bottom_group_messages,true);
+                   bottomNavigationView.setItemSelected(R.id.nav__bottom_group_messages,true);
                }
                 return true;
             }

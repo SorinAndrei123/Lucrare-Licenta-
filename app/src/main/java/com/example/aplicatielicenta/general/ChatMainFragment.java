@@ -95,6 +95,12 @@ public class ChatMainFragment extends Fragment {
                     chatMessage.setMessageText(mesaj);
                     chatMessage.setMessageTime(Long.valueOf(messageTime));
                     chatMessage.setMessageUser(messageUser);
+                    if(chatMessage.getMessageUser().equals(user.getNume())){
+                        chatMessage.setSentByMe(true);
+                    }
+                    else{
+                        chatMessage.setSentByMe(false);
+                    }
                     listaMesaje.add(chatMessage);
 
                 }
