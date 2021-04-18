@@ -64,9 +64,7 @@ public String idFisier;
         this.idSarcina=idSarcina;
         this.storageReference=storageReference;
     }
-    public void functie(){
 
-    }
 
     @NonNull
     @Override

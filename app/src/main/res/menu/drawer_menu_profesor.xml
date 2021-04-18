@@ -8,6 +8,9 @@
     <item android:id="@+id/nav_timetable_profesor"
     android:icon="@drawable/ic_baseline_access_time_24"
     android:title="Timetable"/>
+    <item android:id="@+id/nav_create_quiz"
+        android:icon="@drawable/quiz"
+        android:title="Create quiz"/>
 
 
 </menu>

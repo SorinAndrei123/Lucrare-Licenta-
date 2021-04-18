@@ -75,6 +75,7 @@ ChipNavigationBar bottomNavigationView;
     private void initializare() {
         Toolbar toolbar=findViewById(R.id.toolbarprofesor);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         firebaseAuth=FirebaseAuth.getInstance();
         drawerLayout=findViewById(R.id.drawer_layout_profesor);
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,
@@ -161,6 +162,12 @@ imagineProfil.setOnClickListener(new View.OnClickListener() {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_profesor,fragment).commit();
                     drawerLayout.closeDrawer(GravityCompat.START);
                     bottomNavigationView.setVisibility(View.VISIBLE);
+                }
+                else if(item.getItemId()==R.id.nav_create_quiz){
+                    fragment=AlegeMaterieQuizFragment.newInstance(user);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_profesor,fragment).commit();
+                    bottomNavigationView.setVisibility(View.INVISIBLE);
+                    drawerLayout.closeDrawer(GravityCompat.START);
 
                 }
                 return true;

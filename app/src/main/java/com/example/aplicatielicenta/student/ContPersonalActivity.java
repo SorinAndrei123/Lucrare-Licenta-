@@ -5,12 +5,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -46,6 +49,8 @@ import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import utilitare.general.User;
 
@@ -61,7 +66,10 @@ ImageView imagineProfil;
 FirebaseFirestore firebaseFirestore;
 FirebaseAuth firebaseAuth;
 ChipNavigationBar bottomNavigationView;
+String permisiuni[]=new String[2];
+   static final int requestCode=1;
     static final int REQUEST_CODE=1111;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,10 +83,12 @@ ChipNavigationBar bottomNavigationView;
         toggle.syncState();
         navigationView=findViewById(R.id.nav_view);
         bottomNavigationView=findViewById(R.id.bottom_navigation_view_chat);
-        bottomNavigationView.setVisibility(View.INVISIBLE);
+        bottomNavigationView.setVisibility(View.GONE);
         firebaseAuth=FirebaseAuth.getInstance();
         storageReference=FirebaseStorage.getInstance().getReference("pozeProfil");
         selectareFragmente();
+        permisiuni[0]=Manifest.permission.CAMERA;
+        permisiuni[1]=Manifest.permission.RECORD_AUDIO;
         headerView=navigationView.getHeaderView(0);
         numeCont=headerView.findViewById(R.id.mainPageTextViewNume);
         email=headerView.findViewById(R.id.mainPageTextViewEmail);
@@ -131,8 +141,25 @@ ChipNavigationBar bottomNavigationView;
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
 
                 }
+                else if(bottomNavigationView.getSelectedItemId()==R.id.nav_bottom_calls){
+                    fragmentulSelectat=AlegereParticipantApelFragment.newInstance(user);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
+                }
             }
         });
+
+    }
+
+    private boolean isPermissionGranted(){
+        for(int i=0;i<permisiuni.length;i++){
+            if(ActivityCompat.checkSelfPermission(getApplicationContext(),permisiuni[i])!= PackageManager.PERMISSION_GRANTED){
+
+            }
+        }
+        return true;
+    }
+    private void askPermissions() {
+            ActivityCompat.requestPermissions(this,permisiuni,requestCode);
 
     }
 

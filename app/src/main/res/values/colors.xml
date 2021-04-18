@@ -10,4 +10,12 @@
     <color name="colorPrimary">#0099ff</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimaryNet">#FFC107</color>
+    <color name="colorPrimaryDarkNet">#FFC107</color>
+    <color name="colorAccentNet">#FFC107</color>
+    <color name="colorBGshape">#FFC107</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="egg_color">#efffcc</color>
+
 </resources>

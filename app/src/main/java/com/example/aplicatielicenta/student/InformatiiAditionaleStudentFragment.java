@@ -42,6 +42,8 @@ public class InformatiiAditionaleStudentFragment extends Fragment {
     List<Sarcina>listaSarcini=new ArrayList<>();
     AdaptorTask adaptorTask;
     User user;
+    TextView quiz;
+    String numeMaterie;
 
 
     public InformatiiAditionaleStudentFragment() {
@@ -69,6 +71,8 @@ public class InformatiiAditionaleStudentFragment extends Fragment {
         idMaterieSelectata=getArguments().getString(cod);
         user= (User) getArguments().getSerializable(codUser);
         firebaseFirestore=FirebaseFirestore.getInstance();
+        quiz=view.findViewById(R.id.textViewQuiz);
+        quiz.setVisibility(View.GONE);
         taskuriDeFacut=view.findViewById(R.id.recyclerViewStudentTaskuri);
         taskuriDeFacut.setLayoutManager(new LinearLayoutManager(view.getContext().getApplicationContext()));
         adaptorTask=new AdaptorTask(listaSarcini);
@@ -134,6 +138,36 @@ taskuriDeFacut.addOnItemTouchListener(new RecyclerItemClickListener(view.getCont
     }
 }));
 
+firebaseFirestore.collection("Materii").document(idMaterieSelectata).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+    @Override
+    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+        if(task.isSuccessful()){
+            DocumentSnapshot documentSnapshot=task.getResult();
+             numeMaterie=documentSnapshot.get("nume").toString();
+        }
+
+        firebaseFirestore.collection("Intrebari").whereEqualTo("materie",numeMaterie).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.getResult().size()>0){
+                    quiz.setText("Quiz de rezolvat");
+                    quiz.setVisibility(View.VISIBLE);
+
+
+                }
+            }
+        });
+
+    }
+});
+quiz.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Fragment fragment=StartQuizFragment.newInstance(numeMaterie,user.getNume());
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+
+    }
+});
 
 
     }

@@ -6,4 +6,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="AppTheme.fullscreen">
+        <item name="windowActionBar">false</item>
+    </style>
+
 </resources>
