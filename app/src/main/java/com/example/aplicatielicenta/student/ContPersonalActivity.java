@@ -32,6 +32,7 @@ import com.example.aplicatielicenta.general.ChatAlegereGrupFragment;
 import com.example.aplicatielicenta.general.ChatMainFragment;
 import com.example.aplicatielicenta.logare.MainActivity;
 import com.example.aplicatielicenta.profesor.ContPersonalProfesorActivity;
+import com.example.aplicatielicenta.profesor.VizualizareSarciniFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -76,6 +77,7 @@ String permisiuni[]=new String[2];
         setContentView(R.layout.activity_cont_personal);
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         drawerLayout=findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,
                 R.string.navigation_drawer_open,R.string.navigation_drawer_close);
@@ -101,6 +103,8 @@ String permisiuni[]=new String[2];
                 if(task.isSuccessful()){
                     DocumentSnapshot documentSnapshot=task.getResult();
                 user=documentSnapshot.toObject(User.class);
+                    fragmentulSelectat= VizualizareSarciniTotaleFragment.newInstance(user);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
                 numeCont.setText(user.getNume());
                 email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                     storageReference.child(user.getNume()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -134,34 +138,23 @@ String permisiuni[]=new String[2];
             public void onItemSelected(int i) {
                 if(bottomNavigationView.getSelectedItemId()==R.id.nav__bottom_group_messages){
                     fragmentulSelectat= ChatAlegereGrupFragment.newInstance(user);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).addToBackStack(null).commit();
                 }
                 else if(bottomNavigationView.getSelectedItemId()==R.id.nav_bottom_private_messages){
                     fragmentulSelectat=PrivateChatFragment.newInstance(user);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).addToBackStack(null).commit();
 
                 }
                 else if(bottomNavigationView.getSelectedItemId()==R.id.nav_bottom_calls){
                     fragmentulSelectat=AlegereParticipantApelFragment.newInstance(user);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).addToBackStack(null).commit();
                 }
             }
         });
 
-    }
-
-    private boolean isPermissionGranted(){
-        for(int i=0;i<permisiuni.length;i++){
-            if(ActivityCompat.checkSelfPermission(getApplicationContext(),permisiuni[i])!= PackageManager.PERMISSION_GRANTED){
-
-            }
-        }
-        return true;
-    }
-    private void askPermissions() {
-            ActivityCompat.requestPermissions(this,permisiuni,requestCode);
 
     }
+
 
     private void selectareFragmente() {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -169,7 +162,7 @@ String permisiuni[]=new String[2];
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                if(item.getItemId()==R.id.nav_timetable){
                    fragmentulSelectat= ScheduleFragment.newInstance(user);
-                   getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
+                   getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).addToBackStack(null).commit();
 
                    bottomNavigationView.setVisibility(View.INVISIBLE);
                    drawerLayout.closeDrawer(GravityCompat.START);
@@ -177,7 +170,7 @@ String permisiuni[]=new String[2];
                }
                else if(item.getItemId()==R.id.nav_chat_item){
                    fragmentulSelectat= ChatAlegereGrupFragment.newInstance(user);
-                   getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
+                   getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).addToBackStack(null).commit();
                    drawerLayout.closeDrawer(GravityCompat.START);
                    bottomNavigationView.setVisibility(View.VISIBLE);
                    bottomNavigationView.setItemSelected(R.id.nav__bottom_group_messages,true);
@@ -191,13 +184,17 @@ String permisiuni[]=new String[2];
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+       if(drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else{
             super.onBackPressed();
         }
-
+        if (getFragmentManager().getBackStackEntryCount() != 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
 
     }
     @Override

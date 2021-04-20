@@ -123,7 +123,7 @@ taskuriDeFacut.addOnItemTouchListener(new RecyclerItemClickListener(view.getCont
                 if(task.isSuccessful()){
                     String idSarcina=task.getResult().getDocuments().get(position).getId();
                     Fragment fragment=IncarcareMaterialeSarcinaFragment.newInstance(idSarcina,user);
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack(null).commit();
 
 
                 }
@@ -164,7 +164,7 @@ quiz.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         Fragment fragment=StartQuizFragment.newInstance(numeMaterie,user.getNume());
-        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack(null).commit();
 
     }
 });

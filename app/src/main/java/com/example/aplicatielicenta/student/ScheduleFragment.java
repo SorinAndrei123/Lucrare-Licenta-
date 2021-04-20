@@ -92,7 +92,6 @@ Fragment fragmentCurent;
 
             int dimTaskuri=allTasks.getResult().get(0).size()+allTasks.getResult().get(1).size();
                 int dimTaskuri1=allTasks.getResult().get(0).size();
-                Toast.makeText(getContext().getApplicationContext(), "Dimensiune taskuri: "+String.valueOf(dimTaskuri), Toast.LENGTH_SHORT).show();
                 recyclerView.setAdapter(adaptorRecyclerSchedule);
                 adaptorRecyclerSchedule.notifyDataSetChanged();
                 recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(view.getContext().getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
@@ -102,12 +101,12 @@ Fragment fragmentCurent;
                             Toast.makeText(getContext().getApplicationContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
                            String idMaterie=   allTasks.getResult().get(0).getDocuments().get(position).getId();
                            fragmentCurent=InformatiiAditionaleStudentFragment.newInstance(idMaterie,userPrimit);
-                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentCurent).commit();
+                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentCurent).addToBackStack(null).commit();
                         }
                        else if(listaMaterii.get(position).getGrupa()!=null){
                            String idMaterie=allTasks.getResult().get(1).getDocuments().get(position-dimTaskuri1).getId();
                            fragmentCurent=InformatiiAditionaleStudentFragment.newInstance(idMaterie,userPrimit);
-                           getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentCurent).commit();
+                           getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentCurent).addToBackStack(null).commit();
 
                        }
 

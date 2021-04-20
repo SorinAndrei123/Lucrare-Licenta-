@@ -53,7 +53,7 @@ public TextView materie,tip,zi,ora,grupa,serie;
         if(materieList.get(position).getGrupa()!=null){
             holder.grupa.setText("Grupa "+materieList.get(position).getGrupa());
         }
-        if(materieList.get(position).getSerie()!=null){
+        if(materieList.get(position).getGrupa()==null){
             holder.serie.setText("Seria "+materieList.get(position).getSerie());
         }
 
