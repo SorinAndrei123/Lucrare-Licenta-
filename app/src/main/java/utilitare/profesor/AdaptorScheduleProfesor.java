@@ -52,9 +52,11 @@ public TextView materie,tip,zi,ora,grupa,serie;
         holder.tip.setText("Tip: "+materieList.get(position).getTip());
         if(materieList.get(position).getGrupa()!=null){
             holder.grupa.setText("Grupa "+materieList.get(position).getGrupa());
+            holder.serie.setVisibility(View.GONE);
         }
         if(materieList.get(position).getGrupa()==null){
             holder.serie.setText("Seria "+materieList.get(position).getSerie());
+            holder.grupa.setVisibility(View.GONE);
         }
 
     }

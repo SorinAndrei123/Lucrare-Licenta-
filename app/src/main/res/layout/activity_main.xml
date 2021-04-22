@@ -4,17 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".logare.MainActivity">
+    tools:context=".logare.MainActivity"
+    android:background="@drawable/formamisto">
+
+    <View
+        android:layout_width="337dp"
+        android:layout_height="222dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/spacekid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextMailLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="312dp"
+        android:layout_marginTop="404dp"
         android:background="@drawable/round_border"
         android:drawableStart="@drawable/ic_email"
         android:drawablePadding="16dp"
         android:ems="10"
+        android:textColor="#035083"
+        android:textColorHint="#035083"
         android:hint="@string/adresa_de_email"
         android:inputType="textPersonName"
         android:padding="16dp"
@@ -25,7 +36,7 @@
         android:id="@+id/editTextParolaLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="424dp"
+        android:layout_marginTop="516dp"
         android:background="@drawable/round_border"
         android:drawableStart="@drawable/ic_lock"
         android:drawablePadding="16dp"
@@ -33,8 +44,10 @@
         android:hint="@string/parola"
         android:inputType="textPassword"
         android:padding="16dp"
+        android:textColor="#035083"
+        android:textColorHint="#035083"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/butonLogin"
@@ -48,7 +61,7 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="#035083"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -60,7 +73,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginBottom="64dp"
         android:text="Ai uitat parola?"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#035083"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -74,51 +87,38 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="64dp"
         android:text="Nu ai cont?"
-        android:textColor="@color/colorPrimary"
+        android:textColor="#035083"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <View
-        android:id="@+id/topView"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="148dp"
-        android:background="@drawable/wave"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="98dp"
-        android:layout_height="81dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_person" />
 
     <TextView
         android:id="@+id/topTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginRight="136dp"
-        android:text="LOGIN"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="232dp"
+        android:fontFamily="monospace"
+        android:text="HI STUDENT"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="284dp"
+        android:fontFamily="monospace"
+        android:text="Sign in to continue"
+        android:textColor="#E0EAEA"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

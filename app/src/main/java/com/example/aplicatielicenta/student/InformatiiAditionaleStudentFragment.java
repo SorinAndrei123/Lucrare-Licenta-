@@ -35,7 +35,7 @@ public class InformatiiAditionaleStudentFragment extends Fragment {
     String idMaterieSelectata;
     static final String cod="cod";
     static final String codUser="COD_USER";
-    TextView conectareZoom;
+    TextView conectareZoom,textViewNumeMaterie;
     FirebaseFirestore firebaseFirestore;
     String url;
     RecyclerView taskuriDeFacut;
@@ -73,6 +73,7 @@ public class InformatiiAditionaleStudentFragment extends Fragment {
         firebaseFirestore=FirebaseFirestore.getInstance();
         quiz=view.findViewById(R.id.textViewQuiz);
         quiz.setVisibility(View.GONE);
+        textViewNumeMaterie=view.findViewById(R.id.textViewNumeMaterieInfoExtra);
         taskuriDeFacut=view.findViewById(R.id.recyclerViewStudentTaskuri);
         taskuriDeFacut.setLayoutManager(new LinearLayoutManager(view.getContext().getApplicationContext()));
         adaptorTask=new AdaptorTask(listaSarcini);
@@ -144,6 +145,7 @@ firebaseFirestore.collection("Materii").document(idMaterieSelectata).get().addOn
         if(task.isSuccessful()){
             DocumentSnapshot documentSnapshot=task.getResult();
              numeMaterie=documentSnapshot.get("nume").toString();
+             textViewNumeMaterie.setText("Nume materie: "+numeMaterie);
         }
 
         firebaseFirestore.collection("Intrebari").whereEqualTo("materie",numeMaterie).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

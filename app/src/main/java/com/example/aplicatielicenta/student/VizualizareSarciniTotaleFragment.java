@@ -1,5 +1,6 @@
 package com.example.aplicatielicenta.student;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -45,6 +46,7 @@ public class VizualizareSarciniTotaleFragment extends Fragment {
     List<String>listaIdSarcini=new ArrayList<>();
     RecyclerView recyclerViewToateSarcinile;
     AdaptorRecyclerToateSarcinile adaptorRecyclerToateSarcinile;
+    Context context;
 
     public VizualizareSarciniTotaleFragment() {
     }
@@ -66,6 +68,7 @@ public class VizualizareSarciniTotaleFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_vizualizare_sarcini_totale, container, false);
+        context=container.getContext();
         initView(view);
         return view;
     }
@@ -108,21 +111,9 @@ public class VizualizareSarciniTotaleFragment extends Fragment {
                                     }
                                 }
                             }
-                            adaptorRecyclerToateSarcinile=new AdaptorRecyclerToateSarcinile(mapMaterii,listaSarcini);
+                            adaptorRecyclerToateSarcinile=new AdaptorRecyclerToateSarcinile(mapMaterii,listaSarcini,userPrimit,listaIdSarcini,context);
                             recyclerViewToateSarcinile.setAdapter(adaptorRecyclerToateSarcinile);
                             adaptorRecyclerToateSarcinile.notifyDataSetChanged();
-                            recyclerViewToateSarcinile.addOnItemTouchListener(new RecyclerItemClickListener(view.getContext().getApplicationContext(), recyclerViewToateSarcinile, new RecyclerItemClickListener.OnItemClickListener() {
-                                @Override
-                                public void onItemClick(View view, int position) {
-                                    Fragment fragment=IncarcareMaterialeSarcinaFragment.newInstance(listaIdSarcini.get(position),userPrimit);
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).addToBackStack(null).commit();
-                                }
-
-                                @Override
-                                public void onLongItemClick(View view, int position) {
-
-                                }
-                            }));
                         }
 
 

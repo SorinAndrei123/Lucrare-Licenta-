@@ -111,7 +111,6 @@ View view1;
                         Intrebare intrebare=queryDocumentSnapshot.toObject(Intrebare.class);
                         listIntrebari.add(intrebare);
                     }
-                    Toast.makeText(getContext().getApplicationContext(), "Size lista intrebari: "+listIntrebari.size(), Toast.LENGTH_SHORT).show();
                     questionCountTotal=listIntrebari.size();
                     Collections.shuffle(listIntrebari);
                     showNextQuestion();
@@ -154,22 +153,44 @@ View view1;
         rb2.setTextColor(Color.RED);
         rb3.setTextColor(Color.RED);
         rb4.setTextColor(Color.RED);
+        RadioButton selectedRB=view1.findViewById(radioGroup.getCheckedRadioButtonId());
+        int answerNr=radioGroup.indexOfChild(selectedRB);
         switch (intrebareCurenta.getRaspunsCorect()){
             case 0:
                 rb1.setTextColor(Color.GREEN);
-                intrebare.setText("Answer 1 is correct");
+                if(answerNr!=0){
+                    intrebare.setText("Answer "+String.valueOf(answerNr+1)+ " is wrong");
+                }
+                else{
+                    intrebare.setText("Answer 1 is correct");
+                }
                 break;
             case 1:
                 rb2.setTextColor(Color.GREEN);
-                intrebare.setText("Answer 2 is correct");
+                if(answerNr!=1){
+                    intrebare.setText("Answer "+String.valueOf(answerNr+1)+ " is wrong");
+                }
+                else{
+                    intrebare.setText("Answer 2 is correct");
+                }
                 break;
             case 2:
                 rb3.setTextColor(Color.GREEN);
-                intrebare.setText("Answer 3 is correct");
+                if(answerNr!=2){
+                    intrebare.setText("Answer "+String.valueOf(answerNr+1)+ " is wrong");
+                }
+                else{
+                    intrebare.setText("Answer 3 is correct");
+                }
                 break;
             case 3:
                 rb4.setTextColor(Color.GREEN);
-                intrebare.setText("Answer 4 is correct");
+                if(answerNr!=3){
+                    intrebare.setText("Answer "+String.valueOf(answerNr+1)+ " is wrong");
+                }
+                else{
+                    intrebare.setText("Answer 4 is correct");
+                }
                 break;
 
         }

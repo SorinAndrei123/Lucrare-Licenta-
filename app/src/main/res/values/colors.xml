@@ -17,5 +17,7 @@
     <color name="colorText">#FFFFFF</color>
     <color name="colorBackground">#FFFFFF</color>
     <color name="egg_color">#efffcc</color>
+    <color name="dark_blue">#035083</color>
+    <color name="blue_theme">#6484cc</color>
 
 </resources>

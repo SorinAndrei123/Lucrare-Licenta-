@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="240dp"
-    android:background="@color/colorPrimary"
+    android:background="@color/blue_theme"
     android:orientation="vertical"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -12,31 +14,55 @@
         android:id="@+id/imageViewImagineProfil"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_marginTop="40dp"
-        android:src="@mipmap/ic_launcher_round"></ImageView>
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <TextView
+        android:id="@+id/textViewAnNavHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="60dp"
+        android:text="An:"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/mainPageTextViewNume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="16dp"
         android:paddingTop="8dp"
-        android:textSize="15sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+        android:text="Nume student:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@color/white"
 
-        >
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </TextView>
 
     <TextView
-        android:id="@+id/mainPageTextViewEmail"
+        android:id="@+id/mainPageTextViewGrupa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="108dp"
+        android:text="Grupa:"
         android:textColor="@color/white"
+        android:textSize="15sp"
         android:textStyle="bold"
-        android:text="contdemailutilizator"></TextView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

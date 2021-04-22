@@ -5,26 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".student.VizualizareSarciniTotaleFragment"
-    android:background="@color/egg_color">
+    android:background="@drawable/backgroundsignup">
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/recyclerViewToateSarcinile"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:layout_marginTop="144dp"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent" />
-
-   <TextView
-       android:id="@+id/textView4"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_marginStart="148dp"
-       android:layout_marginTop="16dp"
-       android:text="Home page"
-       android:textSize="20sp"
-       android:textColor="@color/colorPrimary"
-       android:textStyle="bold"
+       android:layout_marginTop="244dp"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,10 +21,10 @@
        android:layout_height="wrap_content"
        android:layout_marginStart="96dp"
        android:layout_marginTop="84dp"
-       android:textSize="20sp"
-       android:textColor="@color/colorPrimary"
+       android:textSize="30sp"
+       android:textColor="@color/white"
        android:textStyle="bold"
-       android:text="Quick sum up of your deadlines"
+       android:text="Assignments"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent" />
 

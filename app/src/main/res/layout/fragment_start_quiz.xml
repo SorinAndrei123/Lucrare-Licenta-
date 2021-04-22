@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/egg_color"
+    android:background="@drawable/fullbackgeoundblue"
     tools:context=".student.StartQuizFragment">
 
 
@@ -14,7 +14,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:text="MY AWESOME QUIZ"
-        android:textColor="@color/colorPrimary"
+        android:drawableEnd="@drawable/exam"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +28,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="276dp"
         android:text="Highscore:0"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,16 +38,19 @@
         android:id="@+id/buttonStartQuiz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="620dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="700dp"
+        android:layout_marginBottom="149dp"
+        android:background="@drawable/round_bg"
         android:text="START QUIZ"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:backgroundTint="@color/colorPrimary"
-        android:background="@drawable/round_bg"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.357" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

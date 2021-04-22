@@ -12,10 +12,12 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,9 +27,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.aplicatielicenta.R;
-import com.example.aplicatielicenta.general.ChatAlegereGrupFragment;
-import com.example.aplicatielicenta.profesor.ScheduleFragmentProfesor;
-import com.example.aplicatielicenta.student.PrivateChatFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,7 +49,7 @@ import utilitare.general.User;
 public class ContPersonalProfesorActivity extends AppCompatActivity {
 DrawerLayout drawerLayout;
 User user=new User();
-TextView numeCont,email;
+TextView numeCont, grupa,an;
 NavigationView navigationView;
 View headerView;
 FirebaseFirestore firebaseFirestore;
@@ -67,6 +66,11 @@ ChipNavigationBar bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
         setContentView(R.layout.activity_cont_personal_profesor);
         initializare();
     }
@@ -86,7 +90,10 @@ ChipNavigationBar bottomNavigationView;
         storageReference=FirebaseStorage.getInstance().getReference("pozeProfil");
         headerView=navigationView.getHeaderView(0);
         numeCont=headerView.findViewById(R.id.mainPageTextViewNume);
-        email=headerView.findViewById(R.id.mainPageTextViewEmail);
+        grupa =headerView.findViewById(R.id.mainPageTextViewGrupa);
+        grupa.setVisibility(View.GONE);
+        an=headerView.findViewById(R.id.textViewAnNavHeader);
+        an.setVisibility(View.GONE);
         imagineProfil=headerView.findViewById(R.id.imageViewImagineProfil);
         firebaseFirestore=FirebaseFirestore.getInstance();
         bottomNavigationView=findViewById(R.id.bottom_navigation_view_chat_prof);
@@ -97,8 +104,8 @@ ChipNavigationBar bottomNavigationView;
                 if(task.isSuccessful()){
                     DocumentSnapshot documentSnapshot=task.getResult();
                     user=documentSnapshot.toObject(User.class);
-                    numeCont.setText(user.getNume());
-                    email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                    numeCont.setText("Hi "+user.getNume());
+                    grupa.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                     storageReference.child(user.getNume()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {

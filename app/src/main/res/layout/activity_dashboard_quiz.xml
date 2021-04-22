@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".profesor.DashboardQuizActivity"
-    android:background="#efffcc">
+    android:background="@color/blue_theme">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAfisareIntrebari"

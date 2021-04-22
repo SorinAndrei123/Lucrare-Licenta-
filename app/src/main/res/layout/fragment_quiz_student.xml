@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/egg_color">
+    android:background="@drawable/fullbackgeoundblue">
 
     <TextView
         android:id="@+id/textViewScore"
@@ -13,7 +13,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="132dp"
         android:text="Score:0"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="264dp"
         android:text="Question:1/x"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="240dp"
         android:text="Intrebare"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,15 +51,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="628dp"
+        android:layout_marginTop="640dp"
+        android:layout_marginBottom="193dp"
         android:background="@drawable/round_bg"
         android:text="CONFIRM"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <RadioGroup
         android:id="@+id/radioGroupAlegereRaspuns"
@@ -74,7 +77,8 @@
             android:layout_height="wrap_content"
             android:text="Optiunea 1"
             android:textSize="15sp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:background="@drawable/border_radio_button"
             android:textStyle="bold"
             android:id="@+id/radioButtonOptiunea1"/>
 
@@ -83,7 +87,9 @@
             android:layout_height="wrap_content"
             android:text="Optiunea 2"
             android:textSize="15sp"
-            android:textColor="@color/colorPrimary"
+            android:background="@drawable/border_radio_button"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:id="@+id/radioButtonOptiunea2"/>
 
@@ -92,16 +98,20 @@
             android:layout_height="wrap_content"
             android:text="Optiunea 3"
             android:textSize="15sp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:textStyle="bold"
+            android:background="@drawable/border_radio_button"
+            android:layout_marginTop="10dp"
             android:id="@+id/radioButtonOptiunea3"/>
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Optiunea 4"
-            android:textSize="15sp"
-            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:background="@drawable/border_radio_button"
+            android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:id="@+id/radioButtonOptiunea4"/>
 
@@ -116,7 +126,7 @@
         android:layout_marginEnd="68dp"
         android:text="0:30"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

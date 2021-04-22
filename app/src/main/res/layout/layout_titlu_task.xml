@@ -4,8 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_recycler_view_item_sarcina"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp">
 
     <TextView
         android:id="@+id/textViewTitluTask"
@@ -13,8 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
         android:text="titlu"
-        android:textSize="16sp"
-        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

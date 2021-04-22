@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/fullbackgeoundblue"
     tools:context=".student.IncarcareMaterialeSarcinaFragment"
     android:orientation="vertical">
     <TextView
@@ -11,8 +12,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/textViewDescriereTaskDetaliiStudent"
         android:layout_marginTop="40dp"
-        android:textSize="16sp"
-        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:text="Descriere task">
 
@@ -22,8 +23,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/textViewTermenLimitaStudent"
         android:layout_marginTop="40dp"
-        android:textSize="16sp"
-        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:text="Termen limita">
 
@@ -33,8 +34,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/textViewTipFisierDetaliiStudent"
         android:text="Tip fisier"
-        android:textSize="16sp"
-        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_marginTop="40dp">
 
@@ -53,16 +54,19 @@
     </TextView>
 
     <ProgressBar
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-    android:id="@+id/progressBarUploadFisier"
-    android:layout_marginTop="100dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:id="@+id/progressBarUploadFisier"
+        android:layout_marginTop="160dp">
 
-</ProgressBar>
+    </ProgressBar>
+
+
+
 
     <Button
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:id="@+id/buttonChooseFile"
         android:text="Choose"
         android:layout_width="389dp"
@@ -71,9 +75,10 @@
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:backgroundTint="@color/colorPrimary">
+        app:backgroundTint="@color/black">
 
     </Button>
+
 
 
 </LinearLayout>

@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -13,14 +12,15 @@ import androidx.fragment.app.Fragment;
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,15 +29,10 @@ import android.widget.Toast;
 
 import com.example.aplicatielicenta.R;
 import com.example.aplicatielicenta.general.ChatAlegereGrupFragment;
-import com.example.aplicatielicenta.general.ChatMainFragment;
-import com.example.aplicatielicenta.logare.MainActivity;
-import com.example.aplicatielicenta.profesor.ContPersonalProfesorActivity;
-import com.example.aplicatielicenta.profesor.VizualizareSarciniFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -50,8 +45,6 @@ import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import utilitare.general.User;
 
@@ -59,7 +52,7 @@ public class ContPersonalActivity extends AppCompatActivity {
 DrawerLayout drawerLayout;
 Fragment fragmentulSelectat;
 User user=new User();
-TextView numeCont,email;
+TextView numeCont, grupa,an;
 NavigationView navigationView;
 View headerView;
 StorageReference storageReference;
@@ -67,13 +60,17 @@ ImageView imagineProfil;
 FirebaseFirestore firebaseFirestore;
 FirebaseAuth firebaseAuth;
 ChipNavigationBar bottomNavigationView;
-String permisiuni[]=new String[2];
    static final int requestCode=1;
     static final int REQUEST_CODE=1111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
         setContentView(R.layout.activity_cont_personal);
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -89,11 +86,10 @@ String permisiuni[]=new String[2];
         firebaseAuth=FirebaseAuth.getInstance();
         storageReference=FirebaseStorage.getInstance().getReference("pozeProfil");
         selectareFragmente();
-        permisiuni[0]=Manifest.permission.CAMERA;
-        permisiuni[1]=Manifest.permission.RECORD_AUDIO;
         headerView=navigationView.getHeaderView(0);
         numeCont=headerView.findViewById(R.id.mainPageTextViewNume);
-        email=headerView.findViewById(R.id.mainPageTextViewEmail);
+        grupa =headerView.findViewById(R.id.mainPageTextViewGrupa);
+        an=headerView.findViewById(R.id.textViewAnNavHeader);
         imagineProfil=headerView.findViewById(R.id.imageViewImagineProfil);
         storageReference= FirebaseStorage.getInstance().getReference("pozeProfil");
         firebaseFirestore=FirebaseFirestore.getInstance();
@@ -105,8 +101,9 @@ String permisiuni[]=new String[2];
                 user=documentSnapshot.toObject(User.class);
                     fragmentulSelectat= VizualizareSarciniTotaleFragment.newInstance(user);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
-                numeCont.setText(user.getNume());
-                email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                numeCont.setText("Hi "+user.getNume());
+              grupa.setText("Grupa "+String.valueOf(user.getGrupa()));
+               an.setText("An:"+String.valueOf(user.getAn()));
                     storageReference.child(user.getNume()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {

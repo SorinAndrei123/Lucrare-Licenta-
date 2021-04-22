@@ -1,51 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_marginTop="20dp"
-    android:background="@color/colorPrimary"
-    android:layout_height="wrap_content">
 
-    <com.github.florent37.shapeofview.shapes.RoundRectView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:background="@drawable/border_sarcini"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:elevation="4dp">
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp">
+
+
         <TextView
             android:id="@+id/textViewMaterieProf"
-            android:layout_width="161dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:paddingLeft="30dp"
-            android:text="Materie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:paddingTop="10dp"
+            android:text="Materie"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </TextView>
 
-        <TextView
-            android:id="@+id/textViewTipProf"
-            android:layout_width="97dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="276dp"
-            android:layout_marginLeft="276dp"
-            android:paddingTop="10dp"
-            android:text="Tip"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textViewTipProf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="140dp"
+        android:paddingTop="10dp"
+        android:text="Tip"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+    <TextView
             android:id="@+id/textViewZiuaProf"
-            android:layout_width="89dp"
-            android:layout_height="38dp"
-            android:layout_marginStart="280dp"
-            android:layout_marginTop="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="100dp"
             android:text="Zi"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -53,13 +55,13 @@
 
         <TextView
             android:id="@+id/textViewOraProf"
-            android:layout_width="76dp"
-            android:layout_height="23dp"
-            android:layout_marginTop="52dp"
-            android:layout_marginEnd="72dp"
-            android:layout_marginRight="72dp"
-            android:layout_marginStart="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="296dp"
             android:text="Ora"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,28 +69,29 @@
             android:id="@+id/textViewSerieProf"
             android:layout_width="112dp"
             android:layout_height="28dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="136dp"
+            android:layout_marginStart="284dp"
+            android:layout_marginTop="152dp"
+            android:text="SERIE "
+            android:textStyle="bold"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textViewGrupaProf"
-            android:layout_width="155dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="216dp"
+    <TextView
+        android:id="@+id/textViewGrupaProf"
+        android:layout_width="155dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="152dp"
+        android:text="GRUPA"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            android:layout_marginLeft="216dp"
-            android:layout_marginTop="136dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </TextView>
-
-
-    </com.github.florent37.shapeofview.shapes.RoundRectView>
-
+    </TextView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
