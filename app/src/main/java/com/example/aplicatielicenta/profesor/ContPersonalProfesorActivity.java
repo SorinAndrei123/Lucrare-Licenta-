@@ -104,6 +104,9 @@ ChipNavigationBar bottomNavigationView;
                 if(task.isSuccessful()){
                     DocumentSnapshot documentSnapshot=task.getResult();
                     user=documentSnapshot.toObject(User.class);
+                    fragment= ScheduleFragmentProfesor.newInstance(user);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_profesor,fragment).commit();
+                    bottomNavigationView.setVisibility(View.INVISIBLE);
                     numeCont.setText("Hi "+user.getNume());
                     grupa.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                     storageReference.child(user.getNume()+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -169,6 +172,7 @@ imagineProfil.setOnClickListener(new View.OnClickListener() {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_profesor,fragment).commit();
                     drawerLayout.closeDrawer(GravityCompat.START);
                     bottomNavigationView.setVisibility(View.VISIBLE);
+                    bottomNavigationView.setItemSelected(R.id.nav__bottom_group_messages,true);
                 }
                 else if(item.getItemId()==R.id.nav_create_quiz){
                     fragment=AlegeMaterieQuizFragment.newInstance(user);

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_bottom_luni"
+        android:title="Luni"
+        android:icon="@drawable/calendar"/>
+    <item android:id="@+id/nav_bottom_marti"
+        android:title="Marti"
+        android:icon="@drawable/calendar"/>
+    <item android:id="@+id/nav_bottom_miercuri"
+        android:title="Miercuri"
+        android:icon="@drawable/calendar"/>
+    <item android:id="@+id/nav_bottom_joi"
+        android:title="Joi"
+        android:icon="@drawable/calendar"/>
+    <item android:id="@+id/nav_bottom_vineri"
+        android:title="Vineri"
+        android:icon="@drawable/calendar"/>
+
+
+
+</menu>

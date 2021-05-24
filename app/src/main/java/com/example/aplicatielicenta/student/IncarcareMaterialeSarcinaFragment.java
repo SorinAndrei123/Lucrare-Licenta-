@@ -39,6 +39,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import utilitare.general.Sarcina;
 import utilitare.general.UploadFisier;
@@ -57,11 +58,11 @@ Button alegereFisier;
 static final int COD_REQUEST_FISIER=24;
 private Uri uri;
 private StorageReference storageReference;
-//private DatabaseReference databaseReference;
 private ProgressBar progressBar;
 Sarcina sarcina;
 User user;
 String idFisier;
+TextView textViewTooLate;
 
     public IncarcareMaterialeSarcinaFragment() {
     }
@@ -103,6 +104,7 @@ String idFisier;
         termenLimita=view.findViewById(R.id.textViewTermenLimitaStudent);
         tipFisier=view.findViewById(R.id.textViewTipFisierDetaliiStudent);
         progressBar=view.findViewById(R.id.progressBarUploadFisier);
+        textViewTooLate=view.findViewById(R.id.textViewTooLate);
         storageReference= FirebaseStorage.getInstance().getReference("fisiere");
         notaPrimita=view.findViewById(R.id.textViewNotaPrimita);
         alegereFisier=view.findViewById(R.id.buttonChooseFile);
@@ -121,30 +123,26 @@ String idFisier;
                     tipFisier.setText("Tip fisier acceptat: "+sarcina.getTipFisierDorit());
 
                 }
-                Calendar calendar=Calendar.getInstance();
-                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM");
-                String dataCurenta=simpleDateFormat.format(calendar.getTime());
-                String dataSarcina=sarcina.getDataDeadline();
-                boolean este_outdated;
+             Calendar calendar=Calendar.getInstance();
+                SimpleDateFormat simpleDateFormatOutPut=new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                SimpleDateFormat simpleDateFormatinput=new SimpleDateFormat("yyyy-MM-dd",Locale.ENGLISH);
+                String dataCurenta=simpleDateFormatOutPut.format(calendar.getTime());
+                Date dataSarcina= null;
+                String dataSarcinaString=null;
                 try {
-                    Date dataFormatata=simpleDateFormat.parse(dataSarcina);
-                    if(dataCurenta.compareTo(dataCurenta)<0){
-                        este_outdated=true;
-                       //Toast.makeText(getContext().getApplicationContext(), "Nu se mai poate incarca.", Toast.LENGTH_SHORT).show();
-                        //progressBar.setVisibility(View.GONE);
-                        //alegereFisier.setVisibility(View.GONE);
-                    }
-                    else{
-                        este_outdated=false;
-                    }
-                    if(este_outdated){
-                       Toast.makeText(getContext().getApplicationContext(), "este outdated", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(getContext().getApplicationContext(), "nu este outdated", Toast.LENGTH_SHORT).show();
-                    }
+                    dataSarcina = simpleDateFormatinput.parse(sarcina.getDataDeadline());
+                    dataSarcinaString=simpleDateFormatOutPut.format(dataSarcina);
                 } catch (ParseException e) {
                     e.printStackTrace();
+                }
+                if(dataCurenta.compareTo(dataSarcinaString)>0){
+                    Toast.makeText(getContext().getApplicationContext(), "Data curenta se intampla dupa data deadline", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
+                    alegereFisier.setVisibility(View.GONE);
+                    textViewTooLate.setVisibility(View.VISIBLE);
+                }
+                else{
+                    Toast.makeText(getContext().getApplicationContext(), "Data curenta nu se intampla dupa data deadline", Toast.LENGTH_SHORT).show();
                 }
 
 

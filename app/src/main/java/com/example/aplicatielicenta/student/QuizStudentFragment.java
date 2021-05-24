@@ -1,5 +1,6 @@
 package com.example.aplicatielicenta.student;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -275,6 +276,7 @@ View view1;
                         if(score>scor.getHighscore()){
                             firebaseFirestore.collection("Scor").document(id).update("highscore",score);
 
+
                         }
                     }
 
@@ -283,10 +285,14 @@ View view1;
                     Scor scor1=new Scor(score,numeStudent,numeMaterie);
                     firebaseFirestore.collection("Scor").document().set(scor1);
 
+
                 }
 
             }
         });
+        Intent intent=new Intent(getContext().getApplicationContext(),ContPersonalActivity.class);
+        startActivity(intent);
+
     }
 
     @Override

@@ -15,7 +15,7 @@
         android:textColor="@color/colorPrimary"
         android:text="Nume Student"
         android:padding="16dp"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:drawableStart="@drawable/name"
         android:drawablePadding="10dp"
         app:layout_constraintStart_toStartOf="parent"

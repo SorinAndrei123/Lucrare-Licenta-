@@ -7,8 +7,4 @@
     <item android:id="@+id/nav__bottom_group_messages"
         android:title="Group messages"
         android:icon="@drawable/ic_group"/>
-    <item android:id="@+id/nav_bottom_calls"
-        android:title="Calls"
-        android:icon="@drawable/ic_call"/>
-
 </menu>

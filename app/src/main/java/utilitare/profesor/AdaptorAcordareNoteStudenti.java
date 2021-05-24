@@ -75,7 +75,7 @@ public String idFisier;
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.numeStudent.setText("Nume student: "+this.listaStudentiNeevaluati.get(position));
+        holder.numeStudent.setText(this.listaStudentiNeevaluati.get(position));
         holder.numeStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -66,11 +66,6 @@ ChipNavigationBar bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
         setContentView(R.layout.activity_cont_personal);
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -135,17 +130,14 @@ ChipNavigationBar bottomNavigationView;
             public void onItemSelected(int i) {
                 if(bottomNavigationView.getSelectedItemId()==R.id.nav__bottom_group_messages){
                     fragmentulSelectat= ChatAlegereGrupFragment.newInstance(user);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).addToBackStack(null).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
                 }
                 else if(bottomNavigationView.getSelectedItemId()==R.id.nav_bottom_private_messages){
                     fragmentulSelectat=PrivateChatFragment.newInstance(user);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).addToBackStack(null).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
 
                 }
-                else if(bottomNavigationView.getSelectedItemId()==R.id.nav_bottom_calls){
-                    fragmentulSelectat=AlegereParticipantApelFragment.newInstance(user);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).addToBackStack(null).commit();
-                }
+
             }
         });
 
@@ -159,7 +151,7 @@ ChipNavigationBar bottomNavigationView;
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                if(item.getItemId()==R.id.nav_timetable){
                    fragmentulSelectat= ScheduleFragment.newInstance(user);
-                   getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).addToBackStack(null).commit();
+                   getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
 
                    bottomNavigationView.setVisibility(View.INVISIBLE);
                    drawerLayout.closeDrawer(GravityCompat.START);
@@ -167,7 +159,7 @@ ChipNavigationBar bottomNavigationView;
                }
                else if(item.getItemId()==R.id.nav_chat_item){
                    fragmentulSelectat= ChatAlegereGrupFragment.newInstance(user);
-                   getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).addToBackStack(null).commit();
+                   getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragmentulSelectat).commit();
                    drawerLayout.closeDrawer(GravityCompat.START);
                    bottomNavigationView.setVisibility(View.VISIBLE);
                    bottomNavigationView.setItemSelected(R.id.nav__bottom_group_messages,true);

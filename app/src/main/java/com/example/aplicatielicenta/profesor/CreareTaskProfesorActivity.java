@@ -2,9 +2,12 @@ package com.example.aplicatielicenta.profesor;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -145,7 +148,6 @@ public class CreareTaskProfesorActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                        // Toast.makeText(CreareTaskProfesorActivity.this, "Adaugare cu succes", Toast.LENGTH_SHORT).show();
-                        intent.putExtra("codTask",documentReference.getId());
                         setResult(RESULT_OK,intent);
                         finish();
                     }
@@ -161,7 +163,7 @@ public class CreareTaskProfesorActivity extends AppCompatActivity {
 
 
     private void updateLabel() {
-        String formatData="dd/MM";
+        String formatData="yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat(formatData, Locale.ENGLISH);
         dataDeadline.setText(simpleDateFormat.format(calendar.getTime()));
 

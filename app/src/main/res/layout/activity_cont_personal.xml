@@ -35,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?android:attr/windowBackground"
+            android:backgroundTint="@color/dark_blue"
             app:cnb_menuResource="@menu/bottom_navigation" />
 
 
