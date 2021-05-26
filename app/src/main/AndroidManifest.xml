@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.aplicatielicenta"
-    >
+    package="com.example.aplicatielicenta">
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -10,7 +10,6 @@
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
 
     <application
         android:name=".logare.CheckUser"
@@ -21,6 +20,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AplicatieLicenta">
+        <activity android:name=".admin.AdminActivity"></activity>
         <activity android:name=".profesor.DashboardQuizActivity" />
         <activity android:name=".profesor.CreareQuizActivity" />
         <activity android:name=".general.AlegereContactActivity" />

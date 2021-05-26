@@ -78,9 +78,9 @@ List<String>numeGrupuriAbreviate=new ArrayList<>();
 
     private void initView(View view) {
         user= (User) getArguments().getSerializable(KEY);
-        listaNumeGrupuri.add("Grupa "+String.valueOf(user.getGrupa()));
-        listaNumeGrupuri.add("Seria "+user.getSerie());
-        numeGrupuriAbreviate.add(user.getSerie());
+       listaNumeGrupuri.add("Grupa "+String.valueOf(user.getGrupa()));
+       listaNumeGrupuri.add("Seria "+user.getSerie());
+       numeGrupuriAbreviate.add(user.getSerie());
         numeGrupuriAbreviate.add(String.valueOf(user.getGrupa()));
         grupuri=view.findViewById(R.id.recyclerViewAlegereGrup);
         firebaseFirestore=FirebaseFirestore.getInstance();
@@ -137,6 +137,7 @@ List<String>numeGrupuriAbreviate=new ArrayList<>();
                                 listaNumeGrupuri.add(materie.getNume()+" seria "+materie.getSerie());
                                 numeGrupuriAbreviate.add(materie.getNume()+materie.getSerie());
                                 databaseReference=FirebaseDatabase.getInstance().getReference("Mesaje").child(materie.getNume()+materie.getSerie());
+                                //Toast.makeText(getContext().getApplicationContext(), materie.getNume()+materie.getSerie(), Toast.LENGTH_SHORT).show();
                                 Query altQuerie=databaseReference.orderByKey().limitToLast(1);
                                 altQuerie.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
@@ -163,6 +164,7 @@ List<String>numeGrupuriAbreviate=new ArrayList<>();
                                     }
 
                                 });
+
 
                             }
 

@@ -24,13 +24,14 @@ public class Materie {
         this.an=an;
     }
 
-    public Materie(String nume, String profesor, String tip, String zi, String ora, String grupa) {
+    public Materie(String nume, String profesor, String tip, String zi, String ora, String grupa,String an) {
         this.nume = nume;
         this.profesor = profesor;
         this.tip = tip;
         this.zi = zi;
         this.ora = ora;
         this.grupa = grupa;
+        this.an=an;
     }
 
 

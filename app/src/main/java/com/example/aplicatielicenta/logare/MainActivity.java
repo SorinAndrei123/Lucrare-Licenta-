@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.aplicatielicenta.admin.AdminActivity;
 import com.example.aplicatielicenta.profesor.ContPersonalProfesorActivity;
 import com.example.aplicatielicenta.R;
 import com.example.aplicatielicenta.student.ContPersonalActivity;
@@ -90,27 +91,36 @@ public class MainActivity extends AppCompatActivity {
                 if(Mail.contains("@csie.ase.ro")){
                     tipCont="Profesori";
                 }
-                auth.signInWithEmailAndPassword(Mail,Parola).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            if(tipCont.equals("Studenti")){
-                                Intent intent=new Intent(getApplicationContext(), ContPersonalActivity.class);
-                                startActivity(intent);
+
+
+                if(mail.getText().toString().equalsIgnoreCase("admin")&&parola.getText().toString().equalsIgnoreCase("admin123")){
+                    Intent intent=new Intent(getApplicationContext(), AdminActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    auth.signInWithEmailAndPassword(Mail,Parola).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                if(tipCont.equals("Studenti")){
+                                    Intent intent=new Intent(getApplicationContext(), ContPersonalActivity.class);
+                                    startActivity(intent);
+                                }
+                                else if(tipCont.equals("Profesori")){
+                                    Intent intent=new Intent(getApplicationContext(), ContPersonalProfesorActivity.class);
+                                    startActivity(intent);
+                                }
+
+
+
                             }
-                            else if(tipCont.equals("Profesori")){
-                                Intent intent=new Intent(getApplicationContext(), ContPersonalProfesorActivity.class);
-                                startActivity(intent);
+                            else{
+                                Toast.makeText(MainActivity.this, "Nu ai introdus bine parola/emailul", Toast.LENGTH_SHORT).show();
                             }
-
-
-
                         }
-                        else{
-                            Toast.makeText(MainActivity.this, "Nu ai introdus bine parola/emailul", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                    });
+                }
+
             }
         });
     }
